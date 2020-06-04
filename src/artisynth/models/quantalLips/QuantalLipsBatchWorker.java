@@ -113,14 +113,15 @@ public class QuantalLipsBatchWorker extends SimpleTimedBatchWorker{
             NumericInputProbe numIP= 
                (NumericInputProbe)root.getInputProbes().get(exc.getName () + " exciter probe");
             numIP.getNumericList ().clear ();
-            numIP.addData (new double []{ 0.00, 0.0, 0.03, 0.0, 0.40, exc.getExcitation (), 1.00,
+            // CM
+            numIP.addData (new double []{ 0.00, 0.0, 0.2, 0.0, 0.6, exc.getExcitation (), 1.00,
                                           exc.getExcitation ()}, NumericInputProbe.EXPLICIT_TIME);
             numIP.setInterpolationOrder (Order.CubicStep);
          }
          else{
             NumericInputProbe numIP= 
             new NumericInputProbe (root, "models/mech/models/badinface/bundles/"+ exc.getName () + ":excitation",0,1);
-            numIP.addData (new double []{ 0.00, 0.0, 0.03, 0.0, 0.40, exc.getExcitation (), 1.00,
+            numIP.addData (new double []{ 0.00, 0.0, 0.2, 0.0, 0.6, exc.getExcitation (), 1.00,
                                        exc.getExcitation ()}, NumericInputProbe.EXPLICIT_TIME);
             numIP.setName(exc.getName () + " exciter probe");
             numIP.setInterpolationOrder (Order.CubicStep);

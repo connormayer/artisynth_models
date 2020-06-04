@@ -238,10 +238,11 @@ public class BadinFaceDemoLipOpening extends BadinFemMuscleFaceDemo {
       }
       
       getMainViewer().setOrthographicView(true);
-      getMainFrame ().setSize (1053, 1113); // 1000 x 1000 viewer 
+      getMainFrame ().setSize (1000, 1000); // 1000 x 1000 viewer 
       getMainViewer().setAxialView (AxisAlignedRotation.NY_Z);
       setViewerEye (new Point3d(-0.521787, 0.0009809, -0.126136));
       setViewerCenter (new Point3d(0.134664, 0.0009809, 0.117214));
+      getMainViewer().zoom(0.5);
    }
    
    private static Rectangle getViewerBounds(GLViewer viewer) {
@@ -252,7 +253,6 @@ public class BadinFaceDemoLipOpening extends BadinFemMuscleFaceDemo {
       area.y = viewer.getCanvas().getLocationOnScreen().y;
       return area;
    }
-   
 
    /**
     * Method to get the distance between this pixel's color and the passed color
@@ -310,11 +310,11 @@ public class BadinFaceDemoLipOpening extends BadinFemMuscleFaceDemo {
                }
             }
          }
-         System.out.println("opening pixels = "+cnt);
-         for (int i = 0; i < pixelColors.size (); i++) {
-            System.out.println("pixel color = "+pixelColors.get (i)+" "+pixelCnts.get (i));
-         }
-         System.out.println("opening color = "+openingColor+" matching colors = "+cnt);
+//         System.out.println("opening pixels = "+cnt);
+//         for (int i = 0; i < pixelColors.size (); i++) {
+//            System.out.println("pixel color = "+pixelColors.get (i)+" "+pixelCnts.get (i));
+//         }
+//         System.out.println("opening color = "+openingColor+" matching colors = "+cnt);
          double distPerPixel = getMainViewer().distancePerPixel (Vector3d.ZERO);
          openingArea = distPerPixel*distPerPixel*cnt*1000000; // meter to mm conversion
          System.out.println("dist-per-pixel = "+distPerPixel+"; opening area = "+openingArea);
