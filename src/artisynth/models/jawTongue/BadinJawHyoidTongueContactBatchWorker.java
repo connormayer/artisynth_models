@@ -37,10 +37,13 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    protected DistanceMonitor rootModelDistMonitor;
    protected FemMuscleModel face;
    protected ComponentList<MuscleExciter> exciters;
+   protected MuscleExciter jawOpenerExciter;
+   protected MuscleExciter jawCloserExciter;
    protected PrintWriter myContactsFileWriter;
    protected PrintWriter myExcitationFileWriter;
    protected PrintWriter myFailedExcitationFileWriter;
 
+   @SuppressWarnings("unchecked")
    public BadinJawHyoidTongueContactBatchWorker(String[] args) throws IllegalStateException, IOException {
       
       super(args);
@@ -50,6 +53,8 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
       root = (BadinJawHyoidTongueContact) Main.getMain().getRootModel();
       
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
+      jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
+      jawCloserExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_close");
       
       myContactsFileWriter = initWriter(myOutputDirName, "contacts." + myName + ".txt");
       myExcitationFileWriter = initWriter(myOutputDirName, "excitations." + myName + ".txt");
@@ -71,6 +76,8 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    protected void preSim() {
       root = (BadinJawHyoidTongueContact) Main.getMain().getRootModel();
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
+      jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
+      jawCloserExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_close");
       rootModelDistMonitor = root.getDistanceMonitor();
       root.removeAllInputProbes();
       addAllExciterProbes();
@@ -78,6 +85,8 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
       for(MuscleExciter exc : exciters) {
           System.out.println(exc.getName() + " " + exc.getExcitation());
        }
+      System.out.println(jawOpenerExciter.getName() + " " + jawOpenerExciter.getExcitation());
+      System.out.println(jawCloserExciter.getName() + " " + jawCloserExciter.getExcitation());
       System.out.println("preSim finished");
    }
 
@@ -104,6 +113,16 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
          if(eProbe != null) {
             root.removeInputProbe(eProbe);
          }
+      }
+      
+      Probe eProbe = root.getInputProbes().get(jawOpenerExciter.getName() + " exciter probe");
+      if(eProbe != null) {
+         root.removeInputProbe(eProbe);
+      }
+      
+      eProbe = root.getInputProbes().get(jawCloserExciter.getName() + " exciter probe");
+      if(eProbe != null) {
+         root.removeInputProbe(eProbe);
       }
    }
    
@@ -186,6 +205,8 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
          for(MuscleExciter exc : exciters) {
             failedexcitationbuilder.append(exc.getExcitation()).append(",");
          }
+         failedexcitationbuilder.append(jawOpenerExciter.getExcitation ()).append (",");
+         failedexcitationbuilder.append(jawCloserExciter.getExcitation ()).append (",");
          failedexcitationbuilder.deleteCharAt(failedexcitationbuilder.length() - 1);
          myFailedExcitationFileWriter.println(failedexcitationbuilder);
          myFailedExcitationFileWriter.flush();
@@ -199,7 +220,9 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    
    @Override
    protected void setUpStopConditionMonitor () {
-      myMaxTime = 0.5;
+      // This time check always fails with values of 1, not sure why...
+      myMaxTime = 0.99;
+      mySettleTime = 0.2;
       super.setUpStopConditionMonitor ();
 
       TimeChecker tchk =

@@ -441,21 +441,35 @@ public class BadinJawHyoidTongueContact extends BadinJawHyoidTongue
    }
 
    public void addExciterProbe(String exciterName, double maxExcitation) {
-    if (getInputProbes().get (exciterName + " exciter probe") == null) {
-    NumericInputProbe nip =
-       new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
-       + ":excitation", 0, 0.5);
-    nip.addData (
-       new double[] { 0.00, 0.0,
-                      0.03, 0.0,
-                      0.40, maxExcitation,
-                      0.50, maxExcitation
-                    }, NumericInputProbe.EXPLICIT_TIME);
-    nip.setName (exciterName + " exciter probe");
-    nip.setInterpolationOrder (Order.CubicStep);
-    addInputProbe (nip);
-    System.out.println("adding probe");
-    System.out.println(exciterName + " " + maxExcitation);
+    if (exciterName.equals("bi_open") || exciterName.equals("bi_close")) {
+       if (getInputProbes().get (exciterName + " exciter probe") == null) {
+          NumericInputProbe nip =
+             new NumericInputProbe(this, "models/jawmodel/exciters/" + exciterName
+             + ":excitation", 0, 1.0);
+          
+          nip.addData (
+             new double[] { 0.00, 0.0,
+                            0.10, maxExcitation
+                          }, NumericInputProbe.EXPLICIT_TIME);
+          nip.setName (exciterName + " exciter probe");
+          nip.setInterpolationOrder (Order.CubicStep);
+          addInputProbe (nip);
+       }
+    } else {
+       if (getInputProbes().get (exciterName + " exciter probe") == null) {
+          NumericInputProbe nip =
+             new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
+             + ":excitation", 0, 1.0);
+          
+          nip.addData (
+             new double[] { 0.00, 0.0,
+                            0.10, 0.0,
+                            0.80, maxExcitation
+                          }, NumericInputProbe.EXPLICIT_TIME);
+          nip.setName (exciterName + " exciter probe");
+          nip.setInterpolationOrder (Order.CubicStep);
+          addInputProbe (nip);
+    }
  }
 }
 

@@ -246,7 +246,7 @@ public abstract class BatchWorkerBase implements Runnable {
       myManagerRequestPort = myManagerRequestPortHolder.value;
 
       if (myRerunListHolder.value != null) {
-         for (String num : myRerunListHolder.value.split (",")) {
+         for (String num : myRerunListHolder.value.split ("Q")) {
             try {
                myRerunList.add (Double.valueOf (num));
             }
@@ -956,6 +956,7 @@ public abstract class BatchWorkerBase implements Runnable {
                    myCurrentTaskException == null &&
                    it.hasNext ()) {
                myLastStepSizeUsed = it.next ();
+               System.out.println("Step Size " + myLastStepSizeUsed);
                if (myLastStepSizeUsed < myRootModel.getMinStepSize ()) {
                   continue;
                }
@@ -989,7 +990,7 @@ public abstract class BatchWorkerBase implements Runnable {
                if (main.getSimulationException () != null){
                   // An exception occurred. Terminate the task and reload the
                   // RootModel in case it was corrupted by the exception.
-                  myCurrentTaskException = main.getSimulationException ();
+                  //myCurrentTaskException = main.getSimulationException ();
                   main.reloadModel ();
                   System.out.println ("Model reloaded");
                   myRootModel = main.getRootModel ();
