@@ -36,9 +36,7 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    protected BadinJawHyoidTongueContact root;
    protected DistanceMonitor rootModelDistMonitor;
    protected FemMuscleModel face;
-   protected ComponentList<MuscleExciter> exciters;
-   protected MuscleExciter jawOpenerExciter;
-   protected MuscleExciter jawCloserExciter;
+   protected ComponentList<MuscleBundle> exciters;
    protected PrintWriter myContactsFileWriter;
    protected PrintWriter myExcitationFileWriter;
    protected PrintWriter myFailedExcitationFileWriter;
@@ -51,10 +49,7 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
       mySettleTime = 0.40;
       
       root = (BadinJawHyoidTongueContact) Main.getMain().getRootModel();
-      
-      exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
-      jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
-      jawCloserExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_close");
+      exciters = (ComponentList<MuscleBundle>) root.findComponent("models/jawmodel/models/tongue/exciters");
       
       myContactsFileWriter = initWriter(myOutputDirName, "contacts." + myName + ".txt");
       myExcitationFileWriter = initWriter(myOutputDirName, "excitations." + myName + ".txt");
@@ -75,18 +70,14 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    @Override
    protected void preSim() {
       root = (BadinJawHyoidTongueContact) Main.getMain().getRootModel();
-      exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
-      jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
-      jawCloserExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_close");
+      exciters = (ComponentList<MuscleBundle>) root.findComponent("models/jawmodel/models/tongue/bundles");
       rootModelDistMonitor = root.getDistanceMonitor();
       root.removeAllInputProbes();
       addAllExciterProbes();
       super.preSim();
-      for(MuscleExciter exc : exciters) {
+      for(MuscleBundle exc : exciters) {
           System.out.println(exc.getName() + " " + exc.getExcitation());
        }
-      System.out.println(jawOpenerExciter.getName() + " " + jawOpenerExciter.getExcitation());
-      System.out.println(jawCloserExciter.getName() + " " + jawCloserExciter.getExcitation());
       System.out.println("preSim finished");
    }
 
@@ -108,21 +99,11 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
    }
 
    protected void removeAllExciterProbes() {
-      for(MuscleExciter exc : exciters) {
+      for(MuscleBundle exc : exciters) {
          Probe eProbe = root.getInputProbes().get(exc.getName() + " exciter probe");
          if(eProbe != null) {
             root.removeInputProbe(eProbe);
          }
-      }
-      
-      Probe eProbe = root.getInputProbes().get(jawOpenerExciter.getName() + " exciter probe");
-      if(eProbe != null) {
-         root.removeInputProbe(eProbe);
-      }
-      
-      eProbe = root.getInputProbes().get(jawCloserExciter.getName() + " exciter probe");
-      if(eProbe != null) {
-         root.removeInputProbe(eProbe);
       }
    }
    
@@ -202,11 +183,9 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
       else{
          StringBuilder failedexcitationbuilder = new StringBuilder();
 
-         for(MuscleExciter exc : exciters) {
+         for(MuscleBundle exc : exciters) {
             failedexcitationbuilder.append(exc.getExcitation()).append(",");
          }
-         failedexcitationbuilder.append(jawOpenerExciter.getExcitation ()).append (",");
-         failedexcitationbuilder.append(jawCloserExciter.getExcitation ()).append (",");
          failedexcitationbuilder.deleteCharAt(failedexcitationbuilder.length() - 1);
          myFailedExcitationFileWriter.println(failedexcitationbuilder);
          myFailedExcitationFileWriter.flush();
