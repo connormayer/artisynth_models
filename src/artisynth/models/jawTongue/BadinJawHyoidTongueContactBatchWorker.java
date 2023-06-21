@@ -49,7 +49,7 @@ public class BadinJawHyoidTongueContactBatchWorker extends SimpleTimedBatchWorke
       mySettleTime = 0.40;
       
       root = (BadinJawHyoidTongueContact) Main.getMain().getRootModel();
-      exciters = (ComponentList<MuscleBundle>) root.findComponent("models/jawmodel/models/tongue/exciters");
+      exciters = (ComponentList<MuscleBundle>) root.findComponent("models/jawmodel/models/tongue/bundles");
       
       myContactsFileWriter = initWriter(myOutputDirName, "contacts." + myName + ".txt");
       myExcitationFileWriter = initWriter(myOutputDirName, "excitations." + myName + ".txt");
