@@ -40,6 +40,7 @@ import artisynth.core.workspace.DriverInterface;
 import artisynth.models.tongue3d.FemMuscleTongueDemo;
 import artisynth.models.tongue3d.HexTongueDemo;
 import artisynth.models.tongue3d.TetTongueDemo;
+import maspack.util.PathFinder;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -177,6 +178,14 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
       };
       timer.scheduleAtFixedRate (task, 0, 10000);
       
+//      NumericOutputProbe mkrProbe =
+//      new NumericOutputProbe ( //not sure how to format this
+//        tongue, "markers/0:position", PathFinder.getSourceRelativePath (this, "PositionMkr.txt"), 0.01);
+//      mkrProbe.setName("FemMarker Position");
+//      mkrProbe.setDefaultDisplayRange (-4, 4);
+//      mkrProbe.setStopTime (10);
+//      addOutputProbe (mkrProbe);
+
       RenderProps.setVisible(myJawModel.frameMarkers(), false);
    }
    
