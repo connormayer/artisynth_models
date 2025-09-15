@@ -51,6 +51,8 @@ import java.util.TimerTask;
 
 public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
 
+   private ArrayList<FemMarker> probeMarkers = new ArrayList<FemMarker>();
+
    public static PropertyList myProps =
       new PropertyList(BadinJawHyoidTonguePosition.class, BadinJawHyoidTongue.class);
 
@@ -63,27 +65,56 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
    public void build (String[] args) throws IOException {
       super.build (args);
       
+      // z-values for different heights, y probes for different widths 
+      double[] zProbes = {136, 132, 128, 124, 120, 116, 112, 108, 104, 100};
+      double[] yProbes = {-16, -12, -8, -4, 0, 4, 8, 12, 16};  
+
+      // Add markers
+      for (int rowIndex = 0; rowIndex < zProbes.length; rowIndex++) {
+         double z = zProbes[rowIndex];
+         for (int colIndex = 0; colIndex < yProbes.length; colIndex++) {
+            double y = yProbes[colIndex];
+            FemNode3d best = null;
+            double bestDist = Double.MAX_VALUE;
+            for (int i = 0; i < tongue.numNodes(); i++) {
+                  FemNode3d node = tongue.getNode(i);
+                  Point3d pos = node.getPosition();
+                  double dist = Math.abs(pos.y - y) + Math.abs(pos.z - z);
+                  if (dist < bestDist) {
+                     best = node;
+                     bestDist = dist;
+                  }
+            }
+            if (best != null) {
+                  FemMarker mkr = new FemMarker(best.getPosition());
+                  mkr.setName("probe_row" + rowIndex + "_col" + colIndex);
+                  RenderProps.setSphericalPoints(mkr, 2, Color.RED);
+                  tongue.addMarker(mkr);
+                  probeMarkers.add(mkr);
+            }
+         }
+      }
+
+      // Tongue tip marker 
       FemMarker mkr = new FemMarker (-5,0, 145);
-      RenderProps.setSphericalPoints (mkr,  2,  Color.BLUE);
+      mkr.setName("tongue tip");
+      RenderProps.setSphericalPoints (mkr,  2,  Color.ORANGE);
       tongue.addMarker (mkr);
+      probeMarkers.add (mkr);
       
       Timer timer = new Timer();
       
       TimerTask task = new TimerTask() {
          public void run() {
-            Point3d tipPos = mkr.getPosition ();
-            System.out.println("pos: " + tipPos);
+            // Point3d tipPos = mkr.getPosition ();
+            // System.out.println("pos: " + tipPos);
+            for (FemMarker marker : probeMarkers) {
+               Point3d pos = marker.getPosition();
+               System.out.printf("%s: %.3f %.3f %.3f%n", marker.getName(), pos.x, pos.y, pos.z);
+            }
          }
       };
       timer.scheduleAtFixedRate (task, 0, 10000);
-      
-//      NumericOutputProbe mkrProbe =
-//      new NumericOutputProbe ( //not sure how to format this
-//        tongue, "markers/0:position", PathFinder.getSourceRelativePath (this, "PositionMkr.txt"), 0.01);
-//      mkrProbe.setName("FemMarker Position");
-//      mkrProbe.setDefaultDisplayRange (-4, 4);
-//      mkrProbe.setStopTime (10);
-//      addOutputProbe (mkrProbe);
 
       RenderProps.setVisible(myJawModel.frameMarkers(), true);
    }
