@@ -69,29 +69,59 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
       double[] zProbes = {136, 132, 128, 124, 120, 116, 112, 108, 104, 100};
       double[] yProbes = {-16, -12, -8, -4, 0, 4, 8, 12, 16};  
 
+      class Probe {
+         String name;
+         double y, z;
+         Probe(String name, double y, double z) {
+            this.name = name;
+            this.y = y;
+            this.z = z;
+         }
+      }
+
+      // Define names and coordinates for probe mesh
+      Probe[] probeGrid = new Probe[] {
+         // Row 0
+         new Probe("row0_1", 16, 108),
+         new Probe("row0_2", -16, 108),
+         // Row 1
+         new Probe("row1_1", 12, 136),
+         new Probe("row1_2", 8, 136),
+         new Probe("row1_3", 0, 136),
+         new Probe("row1_4", -8, 136),
+         new Probe("row1_5", -16, 136),
+         // Row 2
+         new Probe("row2_1", 8, 112),
+         new Probe("row2_2", 4, 136),
+         new Probe("row2_3", -4, 136),
+         new Probe("row2_4", -8, 112),
+         // Row 3
+         new Probe("row3_1", 12, 104),
+         new Probe("row3_2", 0, 104),
+         new Probe("row3_3", -12, 104),
+         // Row 4
+         new Probe("row4_1", 0, 100),
+      };
+
       // Add markers
-      for (int rowIndex = 0; rowIndex < zProbes.length; rowIndex++) {
-         double z = zProbes[rowIndex];
-         for (int colIndex = 0; colIndex < yProbes.length; colIndex++) {
-            double y = yProbes[colIndex];
-            FemNode3d best = null;
-            double bestDist = Double.MAX_VALUE;
-            for (int i = 0; i < tongue.numNodes(); i++) {
-                  FemNode3d node = tongue.getNode(i);
-                  Point3d pos = node.getPosition();
-                  double dist = Math.abs(pos.y - y) + Math.abs(pos.z - z);
-                  if (dist < bestDist) {
-                     best = node;
-                     bestDist = dist;
-                  }
+      for (Probe probe : probeGrid) {
+         FemNode3d best = null;
+         double bestDist = Double.MAX_VALUE;
+         for (int i = 0; i < tongue.numNodes(); i++) {
+            FemNode3d node = tongue.getNode(i);
+            Point3d pos = node.getPosition();
+            double dist = Math.abs(pos.y - probe.y) + Math.abs(pos.z - probe.z);
+            if (dist < bestDist) {
+               best = node;
+               bestDist = dist;
             }
-            if (best != null) {
-                  FemMarker mkr = new FemMarker(best.getPosition());
-                  mkr.setName("probe_row" + rowIndex + "_col" + colIndex);
-                  RenderProps.setSphericalPoints(mkr, 2, Color.RED);
-                  tongue.addMarker(mkr);
-                  probeMarkers.add(mkr);
-            }
+         }
+         if (best != null) {
+            FemMarker mkr = new FemMarker(best.getPosition());
+            mkr.setName(probe.name);
+            RenderProps.setSphericalPoints(mkr, 2, Color.RED);
+            tongue.addMarker(mkr);
+            probeMarkers.add(mkr);
          }
       }
 
@@ -106,8 +136,6 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
       
       TimerTask task = new TimerTask() {
          public void run() {
-            // Point3d tipPos = mkr.getPosition ();
-            // System.out.println("pos: " + tipPos);
             for (FemMarker marker : probeMarkers) {
                Point3d pos = marker.getPosition();
                System.out.printf("%s: %.3f %.3f %.3f%n", marker.getName(), pos.x, pos.y, pos.z);

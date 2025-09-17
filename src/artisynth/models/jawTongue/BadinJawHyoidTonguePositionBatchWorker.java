@@ -40,8 +40,6 @@ import artisynth.core.mechmodels.FrameMarker;
 import artisynth.core.mechmodels.MuscleExciter;
 import artisynth.core.modelbase.ComponentList;
 import artisynth.core.modelbase.ModelComponent;
-import artisynth.core.probes.NumericInputProbe;
-import artisynth.core.probes.NumericOutputProbe;
 import artisynth.core.probes.Probe;
 import artisynth.core.femmodels.FemMarker;
 import maspack.render.RenderProps;
@@ -71,6 +69,8 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    protected PrintWriter myPositionFileWriter;
    protected PrintWriter myExcitationFileWriter;
    protected PrintWriter myFailedExcitationFileWriter;
+
+   private boolean isPositionHeaderWritten = false;
 
    @SuppressWarnings("unchecked")
    public BadinJawHyoidTonguePositionBatchWorker(String[] args) throws IllegalStateException, IOException {
@@ -169,32 +169,28 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
 	      return;
 	   }
 
-	   // Retrieve the FemMarker by name instead of searching by position
-	   FemMarker marker = (FemMarker) tongue.markers().get(0);
+      // Write header if not already written
+      if (!isPositionHeaderWritten) {
+         myPositionFileWriter.println("task,probe,x,y,z");
+         myPositionFileWriter.println("------------------------------");
+         isPositionHeaderWritten = true;
+      }
 
-	   if (marker == null) {
-	      System.err.println("Error: FemMarker 'FemMarker Position' not found in recordPosition()");
-	      return;
-	   }
+      // Write all probe marker positions
+      for (int i = 0; i < tongue.markers().size(); i++) {
+         FemMarker marker = (FemMarker) tongue.markers().get(i);
+         String name = marker.getName();
 
-	   // Get position of the marker
-	   Point3d pos = new Point3d();
-	   marker.getPosition(pos);
-
-	   // Write to file
-	   StringBuilder builder = new StringBuilder();
-	   builder.append(myTaskCounter).append(",");
-	   builder.append("FemMarker,");  // Labeling explicitly as marker
-	   builder.append(pos.x).append(",");
-	   builder.append(pos.y).append(",");
-	   builder.append(pos.z);
-
-	   myPositionFileWriter.println(builder.toString());
-	   myPositionFileWriter.flush();
+         Point3d pos = marker.getPosition();
+         myPositionFileWriter.printf(
+               "%d,%s,%.3f,%.3f,%.3f%n",
+               myTaskCounter,
+               name,
+               pos.x, pos.y, pos.z
+         );
+      }
+      myPositionFileWriter.flush();
 	}
-
-
-
    
    @Override
    protected void recordSimResults() {
