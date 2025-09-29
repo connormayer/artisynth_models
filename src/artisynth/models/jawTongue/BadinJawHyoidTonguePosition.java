@@ -64,10 +64,6 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
    @Override
    public void build (String[] args) throws IOException {
       super.build (args);
-      
-      // z-values for different heights, y probes for different widths 
-      double[] zProbes = {136, 132, 128, 124, 120, 116, 112, 108, 104, 100};
-      double[] yProbes = {-16, -12, -8, -4, 0, 4, 8, 12, 16};  
 
       class Probe {
          String name;
@@ -79,28 +75,47 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
          }
       }
 
+      boolean enableMaximalCover = false;
+      if (enableMaximalCover) {
+         // TODO: enter important points here
+      }
+
       // Define names and coordinates for probe mesh
       Probe[] probeGrid = new Probe[] {
-         // Row 0
-         new Probe("row0_1", 16, 108),
-         new Probe("row0_2", -16, 108),
          // Row 1
-         new Probe("row1_1", 12, 136),
-         new Probe("row1_2", 8, 136),
-         new Probe("row1_3", 0, 136),
-         new Probe("row1_4", -8, 136),
-         new Probe("row1_5", -16, 136),
+         new Probe("row1_1", 35, 125),
+         new Probe("row1_2", 8, 97), // invisible
+         new Probe("row1_3", -8, 97), // invisible
+         new Probe("row1_4", -35, 125),
          // Row 2
-         new Probe("row2_1", 8, 112),
-         new Probe("row2_2", 4, 136),
-         new Probe("row2_3", -4, 136),
-         new Probe("row2_4", -8, 112),
+         new Probe("row2_1", 16, 108),
+         new Probe("row2_2", -8, 100), // invisible
+         new Probe("row2_3", 0, 100), // invisible
+         new Probe("row2_4", 8, 100), // invisible
+         new Probe("row2_5", 16, 108),
          // Row 3
-         new Probe("row3_1", 12, 104),
-         new Probe("row3_2", 0, 104),
-         new Probe("row3_3", -12, 104),
+         new Probe("row3_1", 21, 100),
+         new Probe("row3_2", 12, 136),
+         new Probe("row3_3", 8, 136),
+         new Probe("row3_4", 0, 136),
+         new Probe("row3_5", -8, 136),
+         new Probe("row3_6", -16, 136),
+         new Probe("row3_7", -21, 100),
          // Row 4
-         new Probe("row4_1", 0, 100),
+         new Probe("row4_1", 12, 104), // invisible
+         new Probe("row4_2", 8, 112),
+         new Probe("row4_3", 4, 136),
+         new Probe("row4_4", -4, 136),
+         new Probe("row4_5", -8, 112),
+         new Probe("row4_6", -12, 104), // invisible
+         // Row 5
+         new Probe("row5_1", 12, 104),
+         new Probe("row5_2", 6, 128), // invisible
+         new Probe("row5_3", 0, 104),
+         new Probe("row5_4", 6, 128), // invisible
+         new Probe("row5_5", -12, 104),
+         // Row 6
+         new Probe("row6_1", 0, 100),
       };
 
       // Add markers
