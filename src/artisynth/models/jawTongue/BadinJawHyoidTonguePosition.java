@@ -65,87 +65,112 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
    public void build (String[] args) throws IOException {
       super.build (args);
 
-      class Probe {
-         String name;
-         double y, z;
-         Probe(String name, double y, double z) {
-            this.name = name;
-            this.y = y;
-            this.z = z;
-         }
-      }
-
-      boolean enableMaximalCover = false;
-      if (enableMaximalCover) {
-         // TODO: enter important points here
-      }
-
-      // Define names and coordinates for probe mesh
-      Probe[] probeGrid = new Probe[] {
-         // Row 1
-         new Probe("row1_1", 35, 125),
-         new Probe("row1_2", 8, 97), // invisible
-         new Probe("row1_3", -8, 97), // invisible
-         new Probe("row1_4", -35, 125),
-         // Row 2
-         new Probe("row2_1", 16, 108),
-         new Probe("row2_2", -8, 100), // invisible
-         new Probe("row2_3", 0, 100), // invisible
-         new Probe("row2_4", 8, 100), // invisible
-         new Probe("row2_5", 16, 108),
-         // Row 3
-         new Probe("row3_1", 21, 100),
-         new Probe("row3_2", 12, 136),
-         new Probe("row3_3", 8, 136),
-         new Probe("row3_4", 0, 136),
-         new Probe("row3_5", -8, 136),
-         new Probe("row3_6", -16, 136),
-         new Probe("row3_7", -21, 100),
-         // Row 4
-         new Probe("row4_1", 12, 104), // invisible
-         new Probe("row4_2", 8, 112),
-         new Probe("row4_3", 4, 136),
-         new Probe("row4_4", -4, 136),
-         new Probe("row4_5", -8, 112),
-         new Probe("row4_6", -12, 104), // invisible
-         // Row 5
-         new Probe("row5_1", 12, 104),
-         new Probe("row5_2", 6, 128), // invisible
-         new Probe("row5_3", 0, 104),
-         new Probe("row5_4", 6, 128), // invisible
-         new Probe("row5_5", -12, 104),
-         // Row 6
-         new Probe("row6_1", 0, 100),
+      // Define y and z coordinates for marker placement
+      double[] yCoords = new double[] {
+         35, 8, -8, -35, // row 1
+         16, -8, 0, 8, 16, // row 2
+         21, 12, 8, 0, -8, -16, -21, // row 3
+         12, 8, 4, -4, -8, -12, // row 4
+         12, 6, 0, 6, -12, // row 5
+         0 // row 6
+      };
+      double[] zCoords = new double[] {
+         125, 97, 97, 125, // row 1
+         108, 100, 100, 100, 108, // row 2
+         100, 136, 136, 136, 136, 136, 100, // row 3
+         104, 112, 136, 136, 112, 104, // row 4
+         104, 128, 104, 128, 104, // row 5
+         100 // row 6
       };
 
-      // Add markers
-      for (Probe probe : probeGrid) {
-         FemNode3d best = null;
-         double bestDist = Double.MAX_VALUE;
+      // Define x and y offsets to search for the best node placement given a (y, z) coordinate
+      double[] xOffsets = new double[] { -25.0, -10.0, 0.0, 10.0, 25.0 };
+      double[] yOffsets = new double[] { 0.0, -12.0, 12.0 };
+
+      // This data structure ensures that each node is only used once.
+      java.util.HashSet<Integer> usedNodeIndices = new java.util.HashSet<Integer>();
+
+      // For each set of coordinates, build the local target grid using offsets.
+      for (int idx = 0; idx < yCoords.length; idx++) {
+         double y = yCoords[idx];
+         double z = zCoords[idx];
+
+         // Find base node for this (y, z)
+         FemNode3d base = null;
+         double baseDist = Double.MAX_VALUE;
          for (int i = 0; i < tongue.numNodes(); i++) {
             FemNode3d node = tongue.getNode(i);
             Point3d pos = node.getPosition();
-            double dist = Math.abs(pos.y - probe.y) + Math.abs(pos.z - probe.z);
-            if (dist < bestDist) {
-               best = node;
-               bestDist = dist;
+            double dist = Math.abs(pos.y - y) + Math.abs(pos.z - z);
+            if (dist < baseDist) {
+               base = node;
+               baseDist = dist;
             }
          }
-         if (best != null) {
-            FemMarker mkr = new FemMarker(best.getPosition());
-            mkr.setName(probe.name);
-            RenderProps.setSphericalPoints(mkr, 2, Color.RED);
-            tongue.addMarker(mkr);
-            probeMarkers.add(mkr);
+
+         if (base == null) {
+            continue;
+         }
+
+         double baseX = base.getPosition().x;
+
+         // Choose a candidate node for this particular (y, z)
+         for (double off : xOffsets) {
+            for (double ly : yOffsets) {
+               double targetX = baseX + off;
+               double targetY = y + ly;
+               FemNode3d best = null;
+               int bestIndex = -1;
+               double bestDist = Double.MAX_VALUE;
+
+               double searchThreshold = 20.0;
+               FemNode3d bestHigh = null;
+               int bestHighIndex = -1;
+               double bestHighZ = -Double.MAX_VALUE;
+               for (int i = 0; i < tongue.numNodes(); i++) {
+                  FemNode3d node = tongue.getNode(i);
+                  Point3d pos = node.getPosition();
+                  double xyDist = Math.abs(pos.y - targetY) + Math.abs(pos.x - targetX);
+                  if (xyDist <= searchThreshold) {
+                     if (pos.z > bestHighZ) {
+                        bestHigh = node;
+                        bestHighIndex = i;
+                        bestHighZ = pos.z;
+                     }
+                  }
+                  if (xyDist < bestDist) {
+                     best = node;
+                     bestIndex = i;
+                     bestDist = xyDist;
+                  }
+               }
+
+               // Check if the chosen node is valid or has already been used
+               FemNode3d chosen = (bestHigh != null) ? bestHigh : best;
+               int chosenIndex = (bestHigh != null) ? bestHighIndex : bestIndex;
+               if (chosen != null && chosenIndex >= 0 && !usedNodeIndices.contains(chosenIndex)) {
+                  
+                  // Name each probe using its coordinates
+                  Point3d bpos = chosen.getPosition();
+                  int xi = (int)Math.round(targetX);
+                  int yi = (int)Math.round(targetY);
+                  int zi = (int)Math.round(bpos.z);
+                  String xs = (xi < 0) ? ("n" + Math.abs(xi)) : ("p" + xi);
+                  String ys = (yi < 0) ? ("n" + Math.abs(yi)) : ("p" + yi);
+                  String zs = (zi < 0) ? ("n" + Math.abs(zi)) : ("p" + zi);
+                  String name = String.format("marker%d_x%s_y%s_z%s", idx, xs, ys, zs);
+                  
+                  // Create the marker and add it to the model 
+                  FemMarker xmkr = new FemMarker(bpos);
+                  xmkr.setName(name);
+                  RenderProps.setSphericalPoints(xmkr, 2, Color.BLUE);
+                  tongue.addMarker(xmkr);
+                  probeMarkers.add(xmkr);
+                  usedNodeIndices.add(chosenIndex);
+               }
+            }
          }
       }
-
-      // Tongue tip marker 
-      FemMarker mkr = new FemMarker (-5,0, 145);
-      mkr.setName("tongue tip");
-      RenderProps.setSphericalPoints (mkr,  2,  Color.ORANGE);
-      tongue.addMarker (mkr);
-      probeMarkers.add (mkr);
       
       Timer timer = new Timer();
       
