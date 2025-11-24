@@ -80,7 +80,7 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
       mySettleTime = 0.40;
       
       root = (BadinJawHyoidTonguePosition) Main.getMain().getRootModel();
-     
+
       
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
       jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
