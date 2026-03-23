@@ -60,7 +60,7 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    protected double mySettleTime;
    protected double myMaxTime;
    protected String myName = "default";
-   protected BadinJawHyoidTonguePositionDeactivated root;
+   protected BadinJawHyoidTonguePositionActivated root;
    protected FemMuscleModel face;
    protected FemMuscleModel tongue;
    protected ComponentList<MuscleExciter> exciters;
@@ -79,8 +79,8 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
       myMaxTime = 1.00;
       mySettleTime = 0.40;
       
-      root = (BadinJawHyoidTonguePositionDeactivated) Main.getMain().getRootModel();
-
+      root = (BadinJawHyoidTonguePositionActivated) Main.getMain().getRootModel();
+      root.setMaxStepSize(0.003);
       
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
       jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
@@ -102,7 +102,7 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    
    @Override
    protected void preSim() {
-      root = (BadinJawHyoidTonguePositionDeactivated) Main.getMain().getRootModel();
+      root = (BadinJawHyoidTonguePositionActivated) Main.getMain().getRootModel();
       tongue = root.getTongue();
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
       jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");

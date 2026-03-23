@@ -52,6 +52,13 @@ import java.util.TimerTask;
 public class BadinJawHyoidTonguePositionActivated extends BadinJawHyoidTongue {
 
    private ArrayList<FemMarker> probeMarkers = new ArrayList<FemMarker>();
+   
+   // Enable/disable this flag to show the probe positions in the terminal while running
+   // simulations.
+   private boolean enableVerboseTracking = false; 
+
+   // Declare midline visibility flag and threshold
+   private boolean showMidline = true;
 
    public static PropertyList myProps =
       new PropertyList(BadinJawHyoidTonguePositionActivated.class, BadinJawHyoidTongue.class);
@@ -65,124 +72,116 @@ public class BadinJawHyoidTonguePositionActivated extends BadinJawHyoidTongue {
    public void build (String[] args) throws IOException {
       super.build (args);
 
-      // Define y and z coordinates for marker placement
-      double[] yCoords = new double[] {
-         35, 8, -8, -35, // row 1
-         16, -8, 0, 8, 16, // row 2
-         21, 12, 8, 0, -8, -16, -21, // row 3
-         12, 8, 4, -4, -8, -12, // row 4
-         12, 6, 0, 6, -12, // row 5
-         0 // row 6
+      // Hard coded probe coordinates (x, y, z, name)
+      Object[][] probeCoordinates = {
+         // Row 0
+         {125.208, -22.326, 96.669, "row0_1"},   
+         {127.715, 8.618, 97.165, "row0_2"},     
+         {126.055, 19.467, 96.218, "row0_3"},    
+
+         // Row 1
+         {112.586, -21.622, 104.283, "row1_1"},  
+         {116.284, -17.005, 108.140, "row1_2"},  
+         {115.573, -7.582, 109.644, "row1_3"},   
+         {114.390, 0.000, 110.271, "row1_4"},    
+         {115.572, 7.582, 109.644, "row1_5"},    
+         {116.284, 17.005, 108.140, "row1_6"},  
+         {112.586, 21.622, 104.283, "row1_7"},   
+
+         // Row 2
+         {96.333, -18.824, 108.686, "row2_1"},  
+         {96.753, -13.860, 113.322, "row2_2"},   
+         {97.584, -6.610, 113.977, "row2_3"},   
+         {96.811, 0.000, 113.659, "row2_4"},    
+         {97.584, 6.610, 113.977, "row2_5"},  
+         {96.753, 13.860, 113.322, "row2_6"},  
+         {96.333, 18.824, 108.686, "row2_7"},  
+
+         // Row 3
+         {81.016, -16.360, 98.083, "row3_1"},   
+         {78.589, -15.568, 106.734, "row3_2"},  
+         {78.823, -9.747, 111.026, "row3_3"},   
+         {79.228, -4.108, 111.550, "row3_4"},   
+         {79.228, 4.108, 111.550, "row3_5"},   
+         {78.823, 9.747, 111.026, "row3_6"},     
+         {78.589, 15.568, 106.734, "row3_7"},    
+         {81.016, 16.360, 98.083, "row3_8"},     
+
+         // Row 4
+         {71.403, -13.947, 97.069, "row4_1"},  
+         {67.596, -12.053, 103.382, "row4_2"},  
+         {66.528, -2.895, 106.215, "row4_3"},    
+         {66.528, 2.895, 106.215, "row4_4"},   
+         {67.596, 12.053, 103.382, "row4_5"},   
+         {71.403, 13.947, 97.069, "row4_6"}, 
+         
+         // Row 5
+         {60.962, -9.876, 99.233, "row5_1"},     
+         {60.037, -5.952, 100.075, "row5_2"},   
+         {59.829, -2.571, 100.222, "row5_3"},  
+         {59.574, 0.000, 99.916, "row5_4"},    
+         {59.829, 2.571, 100.222, "row5_5"},    
+         {60.037, 5.952, 100.075, "row5_6"},    
+         {60.962, 9.876, 99.233, "row5_7"},  
+
+         // Row 6
+         {59.023, -5.932, 95.639, "row6_1"},    
+         {59.314, 0.000, 94.640, "row6_2"},     
+         {59.023, 5.932, 95.639, "row6_3"},  
       };
-      double[] zCoords = new double[] {
-         125, 97, 97, 125, // row 1
-         108, 100, 100, 100, 108, // row 2
-         100, 136, 136, 136, 136, 136, 100, // row 3
-         104, 112, 136, 136, 112, 104, // row 4
-         104, 128, 104, 128, 104, // row 5
-         100 // row 6
-      };
 
-      // Define x and y offsets to search for the best node placement given a (y, z) coordinate
-      double[] xOffsets = new double[] { -25.0, -10.0, 0.0, 10.0, 25.0 };
-      double[] yOffsets = new double[] { 0.0, -12.0, 12.0 };
+      // Create markers using the data structure defined above
+      for (int i = 0; i < probeCoordinates.length; i++) {
+         double x = (Double) probeCoordinates[i][0];
+         double y = (Double) probeCoordinates[i][1];
+         double z = (Double) probeCoordinates[i][2];
+         String name = (String) probeCoordinates[i][3];
+         
+         Point3d pos = new Point3d(x, y, z);
+         FemMarker marker = new FemMarker(pos);
+         marker.setName(name);
+         RenderProps.setSphericalPoints(marker, 2, Color.ORANGE);
+         tongue.addMarker(marker);
+         probeMarkers.add(marker);
+      }
 
-      // This data structure ensures that each node is only used once.
-      java.util.HashSet<Integer> usedNodeIndices = new java.util.HashSet<Integer>();
-
-      // For each set of coordinates, build the local target grid using offsets.
-      for (int idx = 0; idx < yCoords.length; idx++) {
-         double y = yCoords[idx];
-         double z = zCoords[idx];
-
-         // Find base node for this (y, z)
-         FemNode3d base = null;
-         double baseDist = Double.MAX_VALUE;
-         for (int i = 0; i < tongue.numNodes(); i++) {
-            FemNode3d node = tongue.getNode(i);
-            Point3d pos = node.getPosition();
-            double dist = Math.abs(pos.y - y) + Math.abs(pos.z - z);
-            if (dist < baseDist) {
-               base = node;
-               baseDist = dist;
+      // Hide markers based on the showMidline flag
+      if (!showMidline) {
+         final double SIDE_Y = 12.0;       // approximate y of the two side columns (mm)
+         final double SIDE_THRESH = 3.0;   // how close to SIDE_Y to treat as "that column"
+         final double CENTER_KEEP = 3.0;   // keep any marker with |y| <= CENTER_KEEP (center column)
+         for (FemMarker m : probeMarkers) {
+            double y = m.getPosition().y;
+            if (Math.abs(y) <= CENTER_KEEP) {
+               // keep the center column visible
+               RenderProps.setVisible(m, true);
             }
-         }
-
-         if (base == null) {
-            continue;
-         }
-
-         double baseX = base.getPosition().x;
-
-         // Choose a candidate node for this particular (y, z)
-         for (double off : xOffsets) {
-            for (double ly : yOffsets) {
-               double targetX = baseX + off;
-               double targetY = y + ly;
-               FemNode3d best = null;
-               int bestIndex = -1;
-               double bestDist = Double.MAX_VALUE;
-
-               double searchThreshold = 20.0;
-               FemNode3d bestHigh = null;
-               int bestHighIndex = -1;
-               double bestHighZ = -Double.MAX_VALUE;
-               for (int i = 0; i < tongue.numNodes(); i++) {
-                  FemNode3d node = tongue.getNode(i);
-                  Point3d pos = node.getPosition();
-                  double xyDist = Math.abs(pos.y - targetY) + Math.abs(pos.x - targetX);
-                  if (xyDist <= searchThreshold) {
-                     if (pos.z > bestHighZ) {
-                        bestHigh = node;
-                        bestHighIndex = i;
-                        bestHighZ = pos.z;
-                     }
-                  }
-                  if (xyDist < bestDist) {
-                     best = node;
-                     bestIndex = i;
-                     bestDist = xyDist;
-                  }
-               }
-
-               // Check if the chosen node is valid or has already been used
-               FemNode3d chosen = (bestHigh != null) ? bestHigh : best;
-               int chosenIndex = (bestHigh != null) ? bestHighIndex : bestIndex;
-               if (chosen != null && chosenIndex >= 0 && !usedNodeIndices.contains(chosenIndex)) {
-                  
-                  // Name each probe using its coordinates
-                  Point3d bpos = chosen.getPosition();
-                  int xi = (int)Math.round(targetX);
-                  int yi = (int)Math.round(targetY);
-                  int zi = (int)Math.round(bpos.z);
-                  String xs = (xi < 0) ? ("n" + Math.abs(xi)) : ("p" + xi);
-                  String ys = (yi < 0) ? ("n" + Math.abs(yi)) : ("p" + yi);
-                  String zs = (zi < 0) ? ("n" + Math.abs(zi)) : ("p" + zi);
-                  String name = String.format("marker%d_x%s_y%s_z%s", idx, xs, ys, zs);
-                  
-                  // Create the marker and add it to the model 
-                  FemMarker xmkr = new FemMarker(bpos);
-                  xmkr.setName(name);
-                  RenderProps.setSphericalPoints(xmkr, 2, Color.BLUE);
-                  tongue.addMarker(xmkr);
-                  probeMarkers.add(xmkr);
-                  usedNodeIndices.add(chosenIndex);
-               }
+            else if (Math.abs(Math.abs(y) - SIDE_Y) <= SIDE_THRESH) {
+               // hide the two side columns
+               RenderProps.setVisible(m, false);
             }
          }
       }
       
-      Timer timer = new Timer();
+      // Output the x, y, z coordinates of all probes once after placement
+      for (FemMarker marker : probeMarkers) {
+         Point3d pos = marker.getPosition();
+         System.out.printf("%s: %.3f %.3f %.3f%n", marker.getName(), pos.x, pos.y, pos.z);
+      }
       
-      TimerTask task = new TimerTask() {
-         public void run() {
-            for (FemMarker marker : probeMarkers) {
-               Point3d pos = marker.getPosition();
-               System.out.printf("%s: %.3f %.3f %.3f%n", marker.getName(), pos.x, pos.y, pos.z);
+      // This whole block periodically prints the probe positions to the terminal
+      if (enableVerboseTracking) {
+         Timer timer = new Timer();
+         TimerTask task = new TimerTask() {
+            public void run() {
+               for (FemMarker marker : probeMarkers) {
+                  Point3d pos = marker.getPosition();
+                  System.out.printf("%s: %.3f %.3f %.3f%n", marker.getName(), pos.x, pos.y, pos.z);
+               }
             }
-         }
-      };
-      timer.scheduleAtFixedRate (task, 0, 10000);
+         };
+         timer.scheduleAtFixedRate (task, 0, 10000);
+      }
 
       RenderProps.setVisible(myJawModel.frameMarkers(), true);
    }
