@@ -169,28 +169,24 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
 	      return;
 	   }
 
-      // Write header if not already written
-      if (!isPositionHeaderWritten) {
-         myPositionFileWriter.println("task,probe,x,y,z");
-         myPositionFileWriter.println("------------------------------");
-         isPositionHeaderWritten = true;
-      }
-
       // Write all probe marker positions
+      StringBuilder builder = new StringBuilder ();
       for (int i = 0; i < tongue.markers().size(); i++) {
          FemMarker marker = (FemMarker) tongue.markers().get(i);
          String name = marker.getName();
 
          Point3d pos = marker.getPosition();
-         myPositionFileWriter.printf(
-               "%d,%s,%.3f,%.3f,%.3f%n",
+         String point_string = String.format(
+            "%d,%s,%.3f,%.3f,%.3f%n",
                myTaskCounter,
                name,
                pos.x, pos.y, pos.z
          );
+         builder.append(point_string);
       }
+      myPositionFileWriter.print(builder);
       myPositionFileWriter.flush();
-	}
+   }
    
    @Override
    protected void recordSimResults() {
