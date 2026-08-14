@@ -1,0 +1,9 @@
+# Description of *InterarytenoidTransverse* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.140667, -0.008900, 0.032839, type=FemNode, attach=arytenoid_L
+1, 0.140668, 0.008900, 0.032840, type=FemNode, attach=arytenoid_R
+
+connections
+0, 1
+

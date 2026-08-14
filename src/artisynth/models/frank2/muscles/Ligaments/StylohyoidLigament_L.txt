@@ -1,0 +1,9 @@
+# Description of *StylohyoidLigament_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.142533, -0.033251, 0.108187, type=Particle, attach=cranium
+1, 0.117992, -0.016490, 0.065152, type=Particle, attach=hyoid
+
+connections
+0, 1
+

@@ -1,0 +1,9 @@
+# Description of *MiddleTemporal_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.142294, 0.063605, 0.207397, type=Particle, attach=cranium
+1, 0.102945, 0.045029, 0.134604, type=Particle, attach=jaw
+
+connections
+0, 1
+

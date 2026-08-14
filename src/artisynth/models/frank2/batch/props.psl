@@ -1,0 +1,17 @@
+# Tongue batch: muscle membership (excitation) + activation order among actives.
+# Order patterns are only meaningful when both muscles are on (see skip blocks).
+# String property values must be double-quoted inside % delimiters (BatchSim PSL).
+
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation" = {%0% %0.1%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation"  = {%0% %0.1%}
+
+"activationOrder" = {%"SIMULTANEOUS"% %"SL_THEN_GGP"% %"GGP_THEN_SL"%}
+
+skip
+   "activationOrder" = {%"SL_THEN_GGP"% %"GGP_THEN_SL"%}
+   "models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation" = {%0%}
+end
+skip
+   "activationOrder" = {%"SL_THEN_GGP"% %"GGP_THEN_SL"%}
+   "models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation" = {%0%}
+end

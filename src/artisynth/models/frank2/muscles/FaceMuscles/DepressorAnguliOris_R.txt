@@ -1,0 +1,20 @@
+# Description of *DepressorAnguliOris_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.076136, 0.020229, 0.065433, type=FemMarker, attach=face
+1, 0.076917, 0.023036, 0.069466, type=FemMarker, attach=face
+2, 0.078440, 0.025634, 0.076051, type=FemMarker, attach=face
+3, 0.079202, 0.027038, 0.080730, type=FemMarker, attach=face
+4, 0.079103, 0.028452, 0.084945, type=FemMarker, attach=face
+5, 0.079080, 0.028772, 0.087023, type=FemMarker, attach=face
+6, 0.078434, 0.029374, 0.091895, type=FemMarker, attach=face
+7, 0.078434, 0.029374, 0.091895, type=FemMarker, attach=face
+8, 0.080177, 0.030728, 0.086177, type=FemMarker, attach=face
+9, 0.081989, 0.030828, 0.080314, type=FemMarker, attach=face
+10, 0.082682, 0.031329, 0.074341, type=FemMarker, attach=face
+11, 0.084648, 0.030764, 0.067907, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6
+7, 8, 9, 10, 11
+

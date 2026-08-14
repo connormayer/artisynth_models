@@ -1,0 +1,9 @@
+# Description of *ThyrohyoidLateralLigament_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.140214, -0.024700, 0.067380, type=FemNode, attach=hyoid
+1, 0.143383, -0.024500, 0.056867, type=FemNode, attach=thyroid
+
+connections
+0, 1
+

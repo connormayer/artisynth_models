@@ -1,0 +1,9 @@
+# Description of *Sternohyoid_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.112115, -0.008000, 0.054558, type=Particle, attach=hyoid
+1, 0.133242, -0.004600, -0.046367, type=Particle, attach=ground
+
+connections
+0, 1
+

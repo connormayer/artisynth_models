@@ -1,0 +1,377 @@
+#!/usr/bin/env python3
+"""
+Generate a complete BatchSim props.psl for FrankModel2 activation-order sweeps.
+
+Edit the configuration below, then run:
+
+    python generate_props.py
+    python generate_props.py -o my_props.psl
+    python generate_props.py --example   # write examples/props_HG_MH_GGP.psl
+
+Each muscle gets an :excitation sweep. Timing is controlled by one root-level
+activationOrder string (SIMULTANEOUS or M1>M2>...). Skip blocks remove invalid
+combinations where an inactive muscle appears in the order pattern.
+"""
+
+from __future__ import print_function
+
+import argparse
+import itertools
+import os
+
+# =============================================================================
+# Configuration — edit this section for your experiment
+# =============================================================================
+
+MECH_PREFIX = "models/FrankMechModel/MuscleExciters/TongueExciters"
+
+muscles = [
+    "HG",
+    "MH",
+    "GGP",
+    "STY",
+]
+
+excitation_levels = [0.0, 0.1]
+
+# Inactive excitation used in skip blocks (must appear in excitation_levels).
+inactive_excitation = 0.0
+
+include_simultaneous = True
+
+# Maximum number of simultaneously active muscles for order permutations.
+max_active = 4
+
+# Default output path (relative to this script's directory).
+default_output = "props.psl"
+
+# =============================================================================
+# Generator implementation
+# =============================================================================
+
+EXCITATION_SUFFIX = ":excitation"
+SIMULTANEOUS = "SIMULTANEOUS"
+ORDER_SEP = ">"
+
+
+def excitation_property_path(muscle, mech_prefix=MECH_PREFIX):
+    return '"{}/{}{}"'.format(mech_prefix, muscle, EXCITATION_SUFFIX)
+
+
+def format_excitation_value(value):
+    """Format a numeric excitation for PSL (%0% / %0.1%)."""
+    if abs(value - round(value)) < 1e-12:
+        return str(int(round(value)))
+    return format(value, ".g")
+
+
+def format_numeric_value_set(values):
+    return "{" + " ".join(
+        "%{}%".format(format_excitation_value(v)) for v in values
+    ) + "}"
+
+
+def format_string_value_set(values):
+    """String properties require quoted tokens: %{\"SIMULTANEOUS\"%}."""
+    return "{" + " ".join('%"{}"%'.format(v) for v in values) + "}"
+
+
+def muscles_in_pattern(pattern):
+    """Return muscle names referenced by an activationOrder pattern."""
+    if pattern.upper() == SIMULTANEOUS:
+        return frozenset()
+    return frozenset(pattern.split(ORDER_SEP))
+
+
+def pattern_from_permutation(perm):
+    return ORDER_SEP.join(perm)
+
+
+def activation_patterns(muscles, max_active, include_simultaneous):
+    """
+    Build the deduplicated list of activationOrder values:
+      - SIMULTANEOUS (optional, once)
+      - every permutation of every muscle subset of size 2..max_active
+    """
+    patterns = []
+    seen = set()
+
+    def add(pattern):
+        if pattern not in seen:
+            seen.add(pattern)
+            patterns.append(pattern)
+
+    if include_simultaneous:
+        add(SIMULTANEOUS)
+
+    upper = min(len(muscles), max_active)
+    for size in range(2, upper + 1):
+        for combo in itertools.combinations(muscles, size):
+            for perm in itertools.permutations(combo):
+                add(pattern_from_permutation(perm))
+
+    if not patterns:
+        add(SIMULTANEOUS)
+
+    return patterns
+
+
+def patterns_containing_muscle(patterns, muscle):
+    """Patterns that reference muscle (excludes SIMULTANEOUS)."""
+    result = []
+    for pattern in patterns:
+        if muscle in muscles_in_pattern(pattern):
+            result.append(pattern)
+    return result
+
+
+def generate_skip_blocks(
+    muscles,
+    patterns,
+    inactive_excitation,
+    mech_prefix=MECH_PREFIX,
+):
+    """
+    One skip block per muscle: when excitation is inactive, skip every order
+    pattern that names that muscle. This also collapses the single-active-muscle
+    case to SIMULTANEOUS only.
+    """
+    blocks = []
+
+    for muscle in muscles:
+        skip_patterns = patterns_containing_muscle(patterns, muscle)
+        if not skip_patterns:
+            continue
+        lines = [
+            "skip",
+            '   "activationOrder" = {}'.format(
+                format_string_value_set(skip_patterns)
+            ),
+            "   {} = {}".format(
+                excitation_property_path(muscle, mech_prefix),
+                format_numeric_value_set([inactive_excitation]),
+            ),
+            "end",
+        ]
+        blocks.append("\n".join(lines))
+
+    return blocks
+
+
+def generate_props_psl(
+    muscles,
+    excitation_levels,
+    inactive_excitation,
+    include_simultaneous,
+    max_active,
+    mech_prefix=MECH_PREFIX,
+):
+    """Assemble a complete props.psl string."""
+    patterns = activation_patterns(
+        muscles, max_active, include_simultaneous
+    )
+    skip_blocks = generate_skip_blocks(
+        muscles, patterns, inactive_excitation, mech_prefix
+    )
+
+    lines = [
+        "# Generated by generate_props.py — do not edit by hand.",
+        "#",
+        "# Muscles: {}".format(", ".join(muscles)),
+        "# Excitation levels: {}".format(
+            ", ".join(format_excitation_value(v) for v in excitation_levels)
+        ),
+        "# Inactive excitation: {}".format(
+            format_excitation_value(inactive_excitation)
+        ),
+        "# include_simultaneous: {}".format(include_simultaneous),
+        "# max_active: {}".format(max_active),
+        "# activationOrder patterns: {}".format(len(patterns)),
+        "# skip blocks: {}".format(len(skip_blocks)),
+        "#",
+        "# String activationOrder values use double quotes inside % delimiters.",
+        "# Stagger interval: FrankModel2BatchWorker.myStaggerInterval",
+        "",
+    ]
+
+    lines.append("# --- Muscle excitation sweeps ---")
+    lines.append("")
+    for muscle in muscles:
+        lines.append(
+            "{} = {}".format(
+                excitation_property_path(muscle, mech_prefix),
+                format_numeric_value_set(excitation_levels),
+            )
+        )
+    lines.append("")
+
+    lines.append("# --- Global activation order ---")
+    lines.append("")
+    lines.append(
+        '"activationOrder" = {}'.format(format_string_value_set(patterns))
+    )
+    lines.append("")
+
+    if skip_blocks:
+        lines.append(
+            "# --- Skip invalid orders (inactive muscle named in pattern) ---"
+        )
+        lines.append("")
+        lines.extend(skip_blocks)
+        lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def validate_config(
+    muscles,
+    excitation_levels,
+    inactive_excitation,
+    max_active,
+):
+    if not muscles:
+        raise ValueError("muscles must not be empty")
+    if len(set(muscles)) != len(muscles):
+        raise ValueError("muscles contains duplicates")
+    if not excitation_levels:
+        raise ValueError("excitation_levels must not be empty")
+    if inactive_excitation not in excitation_levels:
+        raise ValueError(
+            "inactive_excitation {} must appear in excitation_levels".format(
+                inactive_excitation
+            )
+        )
+    if max_active < 1:
+        raise ValueError("max_active must be >= 1")
+
+
+def write_props(path, text):
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+def example_config():
+    return {
+        "muscles": ["HG", "MH", "GGP"],
+        "excitation_levels": [0.0, 0.1],
+        "inactive_excitation": 0.0,
+        "include_simultaneous": True,
+        "max_active": 3,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generate FrankModel2 BatchSim props.psl"
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default=None,
+        help="output file (default: batch/{})".format(default_output),
+    )
+    parser.add_argument(
+        "--example",
+        action="store_true",
+        help="write examples/props_HG_MH_GGP.psl using the documented example",
+    )
+    parser.add_argument(
+        "--muscles",
+        nargs="+",
+        default=None,
+        help="override config muscles",
+    )
+    parser.add_argument(
+        "--excitation",
+        nargs="+",
+        type=float,
+        default=None,
+        help="override config excitation_levels",
+    )
+    parser.add_argument(
+        "--max-active",
+        type=int,
+        default=None,
+        help="override config max_active",
+    )
+    parser.add_argument(
+        "--no-simultaneous",
+        action="store_true",
+        help="omit SIMULTANEOUS from activationOrder",
+    )
+    args = parser.parse_args()
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    if args.example:
+        cfg = example_config()
+        out_path = os.path.join(script_dir, "examples", "props_HG_MH_GGP.psl")
+    else:
+        cfg = {
+            "muscles": args.muscles if args.muscles else muscles,
+            "excitation_levels": (
+                args.excitation if args.excitation else excitation_levels
+            ),
+            "inactive_excitation": inactive_excitation,
+            "include_simultaneous": (
+                False if args.no_simultaneous else include_simultaneous
+            ),
+            "max_active": (
+                args.max_active if args.max_active is not None else max_active
+            ),
+        }
+        out_path = args.output
+        if out_path is None:
+            out_path = os.path.join(script_dir, default_output)
+        elif not os.path.isabs(out_path):
+            out_path = os.path.join(script_dir, out_path)
+
+    validate_config(
+        cfg["muscles"],
+        cfg["excitation_levels"],
+        cfg["inactive_excitation"],
+        cfg["max_active"],
+    )
+
+    text = generate_props_psl(
+        muscles=cfg["muscles"],
+        excitation_levels=cfg["excitation_levels"],
+        inactive_excitation=cfg["inactive_excitation"],
+        include_simultaneous=cfg["include_simultaneous"],
+        max_active=cfg["max_active"],
+    )
+
+    write_props(out_path, text)
+
+    pattern_count = len(
+        activation_patterns(
+            cfg["muscles"],
+            cfg["max_active"],
+            cfg["include_simultaneous"],
+        )
+    )
+    print("Wrote {}".format(os.path.abspath(out_path)))
+    print(
+        "  muscles={}  patterns={}  skip_blocks={}".format(
+            len(cfg["muscles"]),
+            pattern_count,
+            len(
+                generate_skip_blocks(
+                    cfg["muscles"],
+                    activation_patterns(
+                        cfg["muscles"],
+                        cfg["max_active"],
+                        cfg["include_simultaneous"],
+                    ),
+                    cfg["inactive_excitation"],
+                )
+            ),
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+# 10mm condition
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGM:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGA:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/STY:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/MH:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/HG:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/TRANS:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/VERT:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/IL:excitation" 	= {%0% %0.25%}
+
+# 5mm condition
+#"models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/GGM:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/GGA:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/STY:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/MH:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/HG:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/TRANS:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/VERT:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/TongueExciters/IL:excitation" 	= {%0% %0.1% %0.25%}

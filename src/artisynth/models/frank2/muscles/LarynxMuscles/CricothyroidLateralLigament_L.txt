@@ -1,0 +1,9 @@
+# Description of *CricothyroidLateralLigament_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.143244, -0.006500, 0.018309, type=FemNode, attach=cricoid
+1, 0.143244, -0.016500, 0.018309, type=FemNode, attach=thyroid
+
+connections
+0, 1
+

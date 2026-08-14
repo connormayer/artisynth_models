@@ -1,0 +1,9 @@
+# Description of *ThyrohyoidSuperior_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.119843, 0.018800, 0.059072, type=FemNode, attach=hyoid
+1, 0.130392, 0.024699, 0.043585, type=FemNode, attach=thyroid
+
+connections
+0, 1
+

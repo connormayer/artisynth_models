@@ -1,0 +1,16 @@
+# Description of *MusculusUvulae_R* muscle bundle. Created on 2015.05.29_15:32:53 PDT. 
+
+points
+0, 0.118049, 0.002000, 0.122366, type=FemMarker, attach=softPalate
+1, 0.122086, 0.002000, 0.121188, type=FemMarker, attach=softPalate
+2, 0.125550, 0.002000, 0.119410, type=FemMarker, attach=softPalate
+3, 0.128472, 0.002000, 0.116374, type=FemMarker, attach=softPalate
+4, 0.130304, 0.002000, 0.113377, type=FemMarker, attach=softPalate
+5, 0.131337, 0.002000, 0.109998, type=FemMarker, attach=softPalate
+6, 0.132274, 0.002000, 0.106262, type=FemMarker, attach=softPalate
+7, 0.132564, 0.002000, 0.102237, type=FemMarker, attach=softPalate
+8, 0.132416, 0.002000, 0.096354, type=FemMarker, attach=softPalate
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8
+

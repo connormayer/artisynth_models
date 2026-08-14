@@ -1,0 +1,33 @@
+# Description of *ObicularisOrisPeripheral_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.043690, -0.000000, 0.111413, type=FemMarker, attach=face
+1, 0.043732, 0.002414, 0.111413, type=FemMarker, attach=face
+2, 0.043886, 0.004640, 0.111463, type=FemMarker, attach=face
+3, 0.044321, 0.007567, 0.111587, type=FemMarker, attach=face
+4, 0.045182, 0.010987, 0.111687, type=FemMarker, attach=face
+5, 0.046536, 0.014615, 0.111640, type=FemMarker, attach=face
+6, 0.048343, 0.018140, 0.111121, type=FemMarker, attach=face
+7, 0.050434, 0.020985, 0.110134, type=FemMarker, attach=face
+8, 0.052462, 0.023118, 0.108830, type=FemMarker, attach=face
+9, 0.055468, 0.025208, 0.107246, type=FemMarker, attach=face
+10, 0.058396, 0.026969, 0.105572, type=FemMarker, attach=face
+11, 0.060437, 0.028037, 0.103516, type=FemMarker, attach=face
+12, 0.062394, 0.028636, 0.100688, type=FemMarker, attach=face
+13, 0.065132, 0.027210, 0.093807, type=FemMarker, attach=face
+14, 0.065802, 0.026238, 0.090299, type=FemMarker, attach=face
+15, 0.064961, 0.025579, 0.087708, type=FemMarker, attach=face
+16, 0.064155, 0.024391, 0.085719, type=FemMarker, attach=face
+17, 0.063453, 0.022777, 0.083948, type=FemMarker, attach=face
+18, 0.062703, 0.020709, 0.082262, type=FemMarker, attach=face
+19, 0.061788, 0.018252, 0.080655, type=FemMarker, attach=face
+20, 0.060741, 0.015521, 0.079263, type=FemMarker, attach=face
+21, 0.059394, 0.012490, 0.078246, type=FemMarker, attach=face
+22, 0.057771, 0.009209, 0.077756, type=FemMarker, attach=face
+23, 0.056372, 0.005995, 0.077521, type=FemMarker, attach=face
+24, 0.055727, 0.003401, 0.077239, type=FemMarker, attach=face
+25, 0.055614, 0.000000, 0.077098, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+

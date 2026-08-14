@@ -1,0 +1,9 @@
+# Description of *PosteriorTemporal_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.157898, 0.065145, 0.167603, type=Particle, attach=cranium
+1, 0.102975, 0.045016, 0.134582, type=Particle, attach=jaw
+
+connections
+0, 1
+

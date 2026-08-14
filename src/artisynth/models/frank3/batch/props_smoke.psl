@@ -1,0 +1,7 @@
+# Smoke test — 16 combinations (4 exciters × 2 levels: 0 and 0.25)
+# GGP, GGM, SL, IL only; all other tongue exciters omitted for this run.
+
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation" = {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/GGM:excitation" = {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation"  = {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/TongueExciters/IL:excitation"  = {%0% %0.25%}

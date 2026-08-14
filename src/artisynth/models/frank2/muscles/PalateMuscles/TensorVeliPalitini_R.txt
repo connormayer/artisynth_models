@@ -1,0 +1,18 @@
+# Description of *TensorVeliPalitini_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.111507, 0.001000, 0.122102, type=FemMarker, attach=softPalate
+1, 0.112578, 0.006000, 0.121485, type=FemMarker, attach=softPalate
+2, 0.113910, 0.011000, 0.119834, type=FemMarker, attach=softPalate
+3, 0.114562, 0.015502, 0.118245, type=FemMarker, attach=softPalate
+4, 0.115580, 0.022500, 0.116639, type=FemNode, attach=cranium
+5, 0.122593, -0.000000, 0.114029, type=FemMarker, attach=softPalate
+6, 0.120456, 0.005000, 0.115213, type=FemMarker, attach=softPalate
+7, 0.118965, 0.010000, 0.115372, type=FemMarker, attach=softPalate
+8, 0.117463, 0.016000, 0.115432, type=FemMarker, attach=softPalate
+9, 0.129568, 0.019190, 0.139050, type=FemNode, attach=cranium
+
+connections
+0, 1, 2, 3, 4
+5, 6, 7, 8, 4, 9
+

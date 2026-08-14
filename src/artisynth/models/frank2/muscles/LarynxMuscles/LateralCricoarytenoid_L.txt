@@ -1,0 +1,9 @@
+# Description of *LateralCricoarytenoid_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.139378, -0.010600, 0.029214, type=FemNode, attach=arytenoid_L
+1, 0.134211, -0.009800, 0.021735, type=FemNode, attach=cricoid
+
+connections
+0, 1
+

@@ -1,0 +1,9 @@
+# Description of *AnteriorTemporal_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.100443, 0.048797, 0.201368, type=Particle, attach=cranium
+1, 0.113230, 0.036653, 0.111351, type=Particle, attach=jaw
+
+connections
+0, 1
+

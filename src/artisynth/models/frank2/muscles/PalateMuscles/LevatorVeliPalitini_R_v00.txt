@@ -1,0 +1,17 @@
+# Description of *LevatorVeliPalitini_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.117978, 0.000000, 0.120254, type=FemMarker, attach=softPalate
+1, 0.120215, 0.006220, 0.120016, type=FemMarker, attach=softPalate
+2, 0.122452, 0.010840, 0.119777, type=FemMarker, attach=softPalate
+3, 0.125536, 0.015100, 0.120403, type=FemMarker, attach=softPalate
+4, 0.135735, 0.019840, 0.139257, type=FemNode, attach=cranium
+5, 0.127168, 0.000000, 0.114496, type=FemMarker, attach=softPalate
+6, 0.126523, 0.006000, 0.115521, type=FemMarker, attach=softPalate
+7, 0.126624, 0.013000, 0.116465, type=FemMarker, attach=softPalate
+8, 0.129144, 0.015500, 0.118871, type=FemMarker, attach=softPalate
+
+connections
+0, 1, 2, 3, 4
+5, 6, 7, 8, 4
+

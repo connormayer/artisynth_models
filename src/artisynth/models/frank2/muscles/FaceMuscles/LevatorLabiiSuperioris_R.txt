@@ -1,0 +1,15 @@
+# Description of *LevatorLabiiSuperioris_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.066148, 0.027073, 0.144018, type=FemMarker, attach=face
+1, 0.066313, 0.025937, 0.136722, type=FemMarker, attach=face
+2, 0.065480, 0.024871, 0.132774, type=FemMarker, attach=face
+3, 0.064748, 0.023475, 0.127942, type=FemMarker, attach=face
+4, 0.062737, 0.021940, 0.123813, type=FemMarker, attach=face
+5, 0.059808, 0.020987, 0.120802, type=FemMarker, attach=face
+6, 0.056671, 0.020681, 0.118128, type=FemMarker, attach=face
+7, 0.052951, 0.019387, 0.114700, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7
+

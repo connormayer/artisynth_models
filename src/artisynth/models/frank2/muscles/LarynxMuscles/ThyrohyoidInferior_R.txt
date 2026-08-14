@@ -1,0 +1,9 @@
+# Description of *ThyrohyoidInferior_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.117574, 0.016500, 0.057241, type=FemNode, attach=hyoid
+1, 0.125590, 0.014900, 0.031922, type=FemNode, attach=thyroid
+
+connections
+0, 1
+

@@ -1,0 +1,9 @@
+# Description of *CricotrachealAnteriorLigament* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.126427, 0.000000, 0.007444, type=FemNode, attach=cricoid
+1, 0.125430, 0.000000, 0.007357, type=FemNode, attach=ground
+
+connections
+0, 1
+

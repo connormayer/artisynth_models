@@ -1,0 +1,9 @@
+# Description of *MedialPterygoid_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.117364, 0.017618, 0.132594, type=Particle, attach=maxilla
+1, 0.129378, 0.042492, 0.086421, type=Particle, attach=jaw
+
+connections
+0, 1
+
