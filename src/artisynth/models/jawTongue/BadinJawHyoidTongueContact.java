@@ -440,23 +440,40 @@ public class BadinJawHyoidTongueContact extends BadinJawHyoidTongue
       return null;
    }
 
-   public void addExciterProbe(String exciterName, double maxExcitation) {
-    if (getInputProbes().get (exciterName + " exciter probe") == null) {
-    NumericInputProbe nip =
-       new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
-       + ":excitation", 0, 0.5);
-    nip.addData (
-       new double[] { 0.00, 0.0,
-                      0.03, 0.0,
-                      0.40, maxExcitation,
-                      0.50, maxExcitation
-                    }, NumericInputProbe.EXPLICIT_TIME);
-    nip.setName (exciterName + " exciter probe");
-    nip.setInterpolationOrder (Order.CubicStep);
-    addInputProbe (nip);
-    System.out.println("adding probe");
-    System.out.println(exciterName + " " + maxExcitation);
- }
+   public void addExciterProbe(String exciterName, double maxExcitation, double settleTime, double peakTime, double maxTime) {
+      if (exciterName.equals("bi_open") || exciterName.equals("bi_close")) {
+         if (getInputProbes().get (exciterName + " exciter probe") == null) {
+            NumericInputProbe nip =
+               new NumericInputProbe(this, "models/jawmodel/exciters/" + exciterName
+               + ":excitation", 0, maxTime);
+            
+            nip.addData (
+               new double[] { 0.00, 0.0,
+                              settleTime, maxExcitation,
+                              maxTime, maxExcitation
+                            }, NumericInputProbe.EXPLICIT_TIME);
+            nip.setName (exciterName + " exciter probe");
+            nip.setInterpolationOrder (Order.CubicStep);
+            addInputProbe (nip);
+         }
+      } else {
+          if (getInputProbes().get (exciterName + " exciter probe") == null) {
+          NumericInputProbe nip =
+             new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
+             + ":excitation", 0, 0.5);
+          nip.addData (
+             new double[] { 0.00, 0.0,
+                            settleTime, 0.0,
+                            peakTime, maxExcitation,
+                            maxTime, maxExcitation
+                          }, NumericInputProbe.EXPLICIT_TIME);
+          nip.setName (exciterName + " exciter probe");
+          nip.setInterpolationOrder (Order.CubicStep);
+          addInputProbe (nip);
+          System.out.println("adding probe");
+          System.out.println(exciterName + " " + maxExcitation);
+       }
+      }
 }
 
    public void removeExciterProbe(String exciterName) {

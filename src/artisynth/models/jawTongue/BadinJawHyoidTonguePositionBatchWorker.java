@@ -59,8 +59,11 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    
    protected double mySettleTime;
    protected double myMaxTime;
+   protected double myStepSize;
+   protected double myPeakTime;
    protected String myName = "default";
    protected BadinJawHyoidTonguePositionActivated root;
+   //protected BadinJawHyoidTonguePositionDeactivated root;
    protected FemMuscleModel face;
    protected FemMuscleModel tongue;
    protected ComponentList<MuscleExciter> exciters;
@@ -70,17 +73,18 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    protected PrintWriter myExcitationFileWriter;
    protected PrintWriter myFailedExcitationFileWriter;
 
-   private boolean isPositionHeaderWritten = false;
-
    @SuppressWarnings("unchecked")
    public BadinJawHyoidTonguePositionBatchWorker(String[] args) throws IllegalStateException, IOException {
       
       super(args);
-      myMaxTime = 1.00;
-      mySettleTime = 0.40;
+      mySettleTime = 0.1;
+      myPeakTime = 0.4;
+      myStepSize = 0.003;
+      myMaxTime = 0.5;
       
       root = (BadinJawHyoidTonguePositionActivated) Main.getMain().getRootModel();
-      root.setMaxStepSize(0.003);
+      //root = (BadinJawHyoidTonguePositionDeactivated) Main.getMain().getRootModel();
+      root.setMaxStepSize(myStepSize);
       
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
       jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
@@ -103,6 +107,7 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    @Override
    protected void preSim() {
       root = (BadinJawHyoidTonguePositionActivated) Main.getMain().getRootModel();
+      //root = (BadinJawHyoidTonguePositionDeactivated) Main.getMain().getRootModel();
       tongue = root.getTongue();
       exciters = (ComponentList<MuscleExciter>) root.findComponent("models/jawmodel/models/tongue/exciters");
       jawOpenerExciter = (MuscleExciter) root.findComponent("models/jawmodel/exciters/bi_open");
@@ -131,7 +136,7 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
 	         Property prop = myRootModel.getProperty (propPath);
 	         if (prop.getHost () instanceof MuscleExciter) {
 	            MuscleExciter exc = (MuscleExciter) prop.getHost();
-	            root.addExciterProbe(exc.getName(), exc.getExcitation());
+	            root.addExciterProbe(exc.getName(), exc.getExcitation(), mySettleTime, myPeakTime, myMaxTime);
 	         }
 	      }
 	   }
@@ -223,7 +228,6 @@ public class BadinJawHyoidTonguePositionBatchWorker extends SimpleTimedBatchWork
    
    @Override
    protected void setUpStopConditionMonitor() {
-       myMaxTime = 1.00;
        super.setUpStopConditionMonitor();
 
        double maxStep = myRootModel.getMaxStepSize();

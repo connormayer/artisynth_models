@@ -60,14 +60,6 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
    // Declare midline visibility flag and threshold
    private boolean showMidline = true;
 
-   public static PropertyList myProps =
-      new PropertyList(BadinJawHyoidTonguePosition.class, BadinJawHyoidTongue.class);
-
-
-   public BadinJawHyoidTonguePosition () {
-      super();
-   }
-
    @Override
    public void build (String[] args) throws IOException {
       super.build (args);
@@ -75,9 +67,13 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
       // Hard coded probe coordinates (x, y, z, name)
       Object[][] probeCoordinates = {
          // Row 0
-         {125.208, -22.326, 96.669, "row0_1"},   
-         {127.715, 8.618, 97.165, "row0_2"},     
-         {126.055, 19.467, 96.218, "row0_3"},    
+         {120.208, -25.326, 95.669, "row0_1"},
+         {127.715, -19.467, 96.218, "row0_2"},
+         {127.715, -8.618, 97.165, "row0_3"},
+         {127.715, 0.0, 97.165, "row0_4"},
+         {127.715, 8.618, 97.165, "row0_5"},     
+         {126.055, 19.467, 96.218, "row0_6"},    
+         {120.208, 25.326, 95.669, "row0_7"},
 
          // Row 1
          {112.586, -21.622, 104.283, "row1_1"},  
@@ -98,22 +94,22 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
          {96.333, 18.824, 108.686, "row2_7"},  
 
          // Row 3
-         {81.016, -16.360, 98.083, "row3_1"},   
-         {78.589, -15.568, 106.734, "row3_2"},  
-         {78.823, -9.747, 111.026, "row3_3"},   
-         {79.228, -4.108, 111.550, "row3_4"},   
+         {78.589, -15.568, 106.734, "row3_1"},  
+         {78.823, -9.747, 111.550, "row3_2"},   
+         {79.228, -4.108, 111.550, "row3_3"},
+         {79.228, 0.0, 111.550, "row3_4"},
          {79.228, 4.108, 111.550, "row3_5"},   
          {78.823, 9.747, 111.026, "row3_6"},     
          {78.589, 15.568, 106.734, "row3_7"},    
-         {81.016, 16.360, 98.083, "row3_8"},     
 
-         // Row 4
-         {71.403, -13.947, 97.069, "row4_1"},  
-         {67.596, -12.053, 103.382, "row4_2"},  
+         // Row 4 
+         {67.596, -12.053, 103.382, "row4_1"},  
+         {66.528, -7.474, 106.215, "row4_2"},
          {66.528, -2.895, 106.215, "row4_3"},    
-         {66.528, 2.895, 106.215, "row4_4"},   
-         {67.596, 12.053, 103.382, "row4_5"},   
-         {71.403, 13.947, 97.069, "row4_6"}, 
+         {66.528, 0.0, 106.215, "row4_4"},  
+         {66.528, 2.895, 106.215, "row4_5"},
+         {66.528, 7.474, 106.215, "row4_6"},
+         {67.596, 12.053, 103.382, "row4_7"},    
          
          // Row 5
          {60.962, -9.876, 99.233, "row5_1"},     
@@ -122,12 +118,7 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
          {59.574, 0.000, 99.916, "row5_4"},    
          {59.829, 2.571, 100.222, "row5_5"},    
          {60.037, 5.952, 100.075, "row5_6"},    
-         {60.962, 9.876, 99.233, "row5_7"},  
-
-         // Row 6
-         {59.023, -5.932, 95.639, "row6_1"},    
-         {59.314, 0.000, 94.640, "row6_2"},     
-         {59.023, 5.932, 95.639, "row6_3"},  
+         {60.962, 9.876, 99.233, "row5_7"}, 
       };
 
       // Create markers using the data structure defined above
@@ -190,24 +181,41 @@ public class BadinJawHyoidTonguePosition extends BadinJawHyoidTongue {
       return tongue;
    }
    
-   public void addExciterProbe(String exciterName, double maxExcitation) {
-      if (getInputProbes().get (exciterName + " exciter probe") == null) {
-      NumericInputProbe nip =
-         new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
-         + ":excitation", 0, 0.5);
-      nip.addData (
-         new double[] { 0.00, 0.0,
-                        0.03, 0.0,
-                        0.40, maxExcitation,
-                        0.50, maxExcitation
-                      }, NumericInputProbe.EXPLICIT_TIME);
-      nip.setName (exciterName + " exciter probe");
-      nip.setInterpolationOrder (Order.CubicStep);
-      addInputProbe (nip);
-      System.out.println("adding probe");
-      System.out.println(exciterName + " " + maxExcitation);
-   }
-  }
+   public void addExciterProbe(String exciterName, double maxExcitation, double settleTime, double peakTime, double maxTime) {
+      if (exciterName.equals("bi_open") || exciterName.equals("bi_close")) {
+         if (getInputProbes().get (exciterName + " exciter probe") == null) {
+            NumericInputProbe nip =
+               new NumericInputProbe(this, "models/jawmodel/exciters/" + exciterName
+               + ":excitation", 0, maxTime);
+            
+            nip.addData (
+               new double[] { 0.00, 0.0,
+                              settleTime, maxExcitation,
+                              maxTime, maxExcitation
+                            }, NumericInputProbe.EXPLICIT_TIME);
+            nip.setName (exciterName + " exciter probe");
+            nip.setInterpolationOrder (Order.CubicStep);
+            addInputProbe (nip);
+         }
+      } else {
+          if (getInputProbes().get (exciterName + " exciter probe") == null) {
+          NumericInputProbe nip =
+             new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
+             + ":excitation", 0, 0.5);
+          nip.addData (
+             new double[] { 0.00, 0.0,
+                            settleTime, 0.0,
+                            peakTime, maxExcitation,
+                            maxTime, maxExcitation
+                          }, NumericInputProbe.EXPLICIT_TIME);
+          nip.setName (exciterName + " exciter probe");
+          nip.setInterpolationOrder (Order.CubicStep);
+          addInputProbe (nip);
+          System.out.println("adding probe");
+          System.out.println(exciterName + " " + maxExcitation);
+       }
+      }
+}
 
      public void removeExciterProbe(String exciterName) {
         Probe p = getInputProbes().get(exciterName + " exciter probe");

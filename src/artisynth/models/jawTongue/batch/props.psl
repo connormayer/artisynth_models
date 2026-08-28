@@ -1,14 +1,26 @@
+"models/jawmodel/models/tongue/exciters/GGP:excitation" 	= {%0.1%}
+#"models/jawmodel/models/tongue/exciters/GGM:excitation" 	= {%0% %0.1%}
+#"models/jawmodel/models/tongue/exciters/GGA:excitation" 	= {%0% %0.1%}
+"models/jawmodel/models/tongue/exciters/STY:excitation" 	= {%0.1%}
+#"models/jawmodel/models/tongue/exciters/MH:excitation" 		= {%0% %0.1%}
+#"models/jawmodel/models/tongue/exciters/HG:excitation" 		= {%0% %0.1%}
+#"models/jawmodel/models/tongue/exciters/TRANS:excitation" 	= {%0% %0.1%}
+#"models/jawmodel/models/tongue/exciters/VERT:excitation" 	= {%0% %0.1%}
+"models/jawmodel/models/tongue/exciters/SL:excitation" 		= {%0.5%}
+#"models/jawmodel/models/tongue/exciters/IL:excitation" 		= {%0% %0.1%}
+"models/jawmodel/exciters/bi_close:excitation"				= {%0.004%}
+
 # 10mm condition
-"models/jawmodel/models/tongue/exciters/GGP:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/GGM:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/GGA:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/STY:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/MH:excitation" 		= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/HG:excitation" 		= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/TRANS:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/VERT:excitation" 	= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/SL:excitation" 		= {%0% %0.25%}
-"models/jawmodel/models/tongue/exciters/IL:excitation" 		= {%0% %0.25%}
+#"models/jawmodel/models/tongue/exciters/GGP:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/GGM:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/GGA:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/STY:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/MH:excitation" 		= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/HG:excitation" 		= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/TRANS:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/VERT:excitation" 	= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/SL:excitation" 		= {%0% %0.25% %0.50%}
+#"models/jawmodel/models/tongue/exciters/IL:excitation" 		= {%0% %0.25% %0.50%}
 #"models/jawmodel/exciters/bi_open:excitation"				= {%0.01%}
 #"models/jawmodel/exciters/bi_close:excitation"				= {%0%}
 
