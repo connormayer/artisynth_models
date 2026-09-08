@@ -1,0 +1,14 @@
+# Description of *SpleniusCervicis_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.169341, 0.036706, 0.117039, type=FrameMarker, attach=C1
+1, 0.251123, 0.000178, -0.065483, type=FrameMarker, attach=base
+2, 0.166304, 0.025849, 0.104454, type=FrameMarker, attach=C2
+3, 0.251123, 0.000178, -0.065483, type=FrameMarker, attach=base
+4, 0.167830, 0.026136, 0.086373, type=FrameMarker, attach=C3
+5, 0.251123, 0.000178, -0.065483, type=FrameMarker, attach=base
+
+connections
+0, 1
+2, 3
+4, 5

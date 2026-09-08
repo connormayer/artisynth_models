@@ -1,0 +1,23 @@
+# Description of *Multifidus_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+1, 0.190393, 0.012685, 0.069682, type=FrameMarker, attach=C4
+2, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+3, 0.200457, 0.012434, 0.052855, type=FrameMarker, attach=C5
+4, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+5, 0.206105, 0.012246, 0.038812, type=FrameMarker, attach=C6
+6, 0.187512, 0.007809, 0.098105, type=FrameMarker, attach=C2
+7, 0.190393, 0.012685, 0.069682, type=FrameMarker, attach=C4
+8, 0.191584, 0.007636, 0.086387, type=FrameMarker, attach=C3
+9, 0.200457, 0.012434, 0.052855, type=FrameMarker, attach=C5
+10, 0.196717, 0.007500, 0.076063, type=FrameMarker, attach=C4
+11, 0.206105, 0.012246, 0.038812, type=FrameMarker, attach=C6
+
+connections
+0, 1
+2, 3
+4, 5
+6, 7
+8, 9
+10, 11

@@ -1,0 +1,67 @@
+# Description of *Palatopharyngeus_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.119671, 0.000000, 0.121985, type=FemMarker, attach=softPalate
+1, 0.124689, 0.008000, 0.119538, type=FemMarker, attach=softPalate
+2, 0.128015, 0.014000, 0.115361, type=FemMarker, attach=softPalate
+3, 0.131038, 0.017000, 0.108351, type=FemMarker, attach=softPalate
+4, 0.132854, 0.018681, 0.100370, type=FemMarker, attach=softPalate
+5, 0.133897, 0.019676, 0.092649, type=FemMarker, attach=softPalate
+6, 0.134803, 0.019838, 0.086699, type=FemMarker, attach=softPalate
+7, 0.136151, 0.022131, 0.082172, type=FemNode, attach=pharynx
+8, 0.137154, 0.022960, 0.079021, type=FemNode, attach=pharynx
+9, 0.137449, 0.022509, 0.072182, type=FemNode, attach=pharynx
+10, 0.139740, 0.023978, 0.060945, type=FemNode, attach=pharynx
+11, 0.144348, 0.024173, 0.048399, type=FemNode, attach=pharynx
+12, 0.148486, 0.022664, 0.037242, type=FemNode, attach=pharynx
+13, 0.152462, 0.018136, 0.025590, type=FemNode, attach=pharynx
+14, 0.153829, 0.014951, 0.020284, type=FemNode, attach=pharynx
+15, 0.124129, 0.000000, 0.117112, type=FemMarker, attach=softPalate
+16, 0.127684, 0.007340, 0.114954, type=FemMarker, attach=softPalate
+17, 0.130036, 0.012845, 0.110980, type=FemMarker, attach=softPalate
+18, 0.132285, 0.015412, 0.105264, type=FemMarker, attach=softPalate
+19, 0.133690, 0.016968, 0.098570, type=FemMarker, attach=softPalate
+20, 0.134491, 0.017844, 0.092045, type=FemMarker, attach=softPalate
+21, 0.135186, 0.018046, 0.086487, type=FemMarker, attach=softPalate
+22, 0.137687, 0.019733, 0.080482, type=FemNode, attach=pharynx
+23, 0.139348, 0.020034, 0.075230, type=FemNode, attach=pharynx
+24, 0.141381, 0.020029, 0.068790, type=FemNode, attach=pharynx
+25, 0.146957, 0.018930, 0.055842, type=FemNode, attach=pharynx
+26, 0.150328, 0.016910, 0.045671, type=FemNode, attach=pharynx
+27, 0.152655, 0.016776, 0.037381, type=FemNode, attach=pharynx
+28, 0.154929, 0.014872, 0.027886, type=FemNode, attach=pharynx
+29, 0.128587, 0.000000, 0.112238, type=FemMarker, attach=softPalate
+30, 0.130680, 0.006680, 0.110369, type=FemMarker, attach=softPalate
+31, 0.132057, 0.011690, 0.106599, type=FemMarker, attach=softPalate
+32, 0.133531, 0.013824, 0.102177, type=FemMarker, attach=softPalate
+33, 0.134525, 0.015254, 0.096769, type=FemMarker, attach=softPalate
+34, 0.135084, 0.016012, 0.091442, type=FemMarker, attach=softPalate
+35, 0.135569, 0.016254, 0.086275, type=FemMarker, attach=softPalate
+36, 0.138310, 0.017067, 0.081122, type=FemNode, attach=pharynx
+37, 0.140640, 0.016265, 0.075569, type=FemNode, attach=pharynx
+38, 0.143685, 0.014068, 0.067451, type=FemNode, attach=pharynx
+39, 0.147307, 0.012289, 0.058025, type=FemNode, attach=pharynx
+40, 0.150379, 0.011431, 0.048733, type=FemNode, attach=pharynx
+41, 0.152796, 0.011504, 0.040474, type=FemNode, attach=pharynx
+42, 0.154334, 0.011385, 0.033741, type=FemNode, attach=pharynx
+43, 0.133180, 0.000000, 0.107217, type=FemMarker, attach=softPalate
+44, 0.133766, 0.006000, 0.105646, type=FemMarker, attach=softPalate
+45, 0.134140, 0.010500, 0.102086, type=FemMarker, attach=softPalate
+46, 0.134816, 0.012188, 0.098997, type=FemMarker, attach=softPalate
+47, 0.135386, 0.013489, 0.094914, type=FemMarker, attach=softPalate
+48, 0.135696, 0.014124, 0.090820, type=FemMarker, attach=softPalate
+49, 0.135963, 0.014407, 0.086057, type=FemMarker, attach=softPalate
+50, 0.139887, 0.013571, 0.079868, type=FemNode, attach=pharynx
+51, 0.142655, 0.010947, 0.072325, type=FemNode, attach=pharynx
+52, 0.146311, 0.007646, 0.061707, type=FemNode, attach=pharynx
+53, 0.149333, 0.006748, 0.052744, type=FemNode, attach=pharynx
+54, 0.151499, 0.006429, 0.045974, type=FemNode, attach=pharynx
+55, 0.153200, 0.006504, 0.039477, type=FemNode, attach=pharynx
+56, 0.154778, 0.006553, 0.033182, type=FemNode, attach=pharynx
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
+29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+

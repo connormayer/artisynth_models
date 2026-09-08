@@ -1,0 +1,13 @@
+# Description of *LevatorAnguliOris_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.071293, 0.032044, 0.140477, type=FemMarker, attach=face
+1, 0.069461, 0.031100, 0.130337, type=FemMarker, attach=face
+2, 0.068314, 0.029717, 0.121374, type=FemMarker, attach=face
+3, 0.067606, 0.029508, 0.116687, type=FemMarker, attach=face
+4, 0.066376, 0.030275, 0.112320, type=FemMarker, attach=face
+5, 0.063465, 0.033587, 0.108199, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5
+

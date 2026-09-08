@@ -1,0 +1,13 @@
+# Description of *Risorius_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.106773, 0.048082, 0.100462, type=FemMarker, attach=face
+1, 0.097465, 0.043254, 0.099836, type=FemMarker, attach=face
+2, 0.091353, 0.038997, 0.098138, type=FemMarker, attach=face
+3, 0.078066, 0.033187, 0.099946, type=FemMarker, attach=face
+4, 0.072277, 0.028190, 0.100261, type=FemMarker, attach=face
+5, 0.061070, 0.023345, 0.097298, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5
+

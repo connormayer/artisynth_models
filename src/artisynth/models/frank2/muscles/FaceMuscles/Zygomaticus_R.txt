@@ -1,0 +1,15 @@
+# Description of *Zygomaticus_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.086427, 0.053139, 0.147583, type=FemMarker, attach=face
+1, 0.083841, 0.051166, 0.133216, type=FemMarker, attach=face
+2, 0.083497, 0.049192, 0.126298, type=FemMarker, attach=face
+3, 0.083029, 0.045111, 0.120038, type=FemMarker, attach=face
+4, 0.081732, 0.041300, 0.116294, type=FemMarker, attach=face
+5, 0.079295, 0.035201, 0.110664, type=FemMarker, attach=face
+6, 0.078647, 0.029991, 0.105486, type=FemMarker, attach=face
+7, 0.076738, 0.025849, 0.104152, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7
+

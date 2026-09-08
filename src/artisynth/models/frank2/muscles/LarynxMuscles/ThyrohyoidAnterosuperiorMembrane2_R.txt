@@ -1,0 +1,9 @@
+# Description of *ThyrohyoidAnterosuperiorMembrane2_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.128098, 0.020900, 0.048002, type=FemNode, attach=thyroid
+1, 0.134133, 0.024500, 0.063989, type=FemNode, attach=hyoid
+
+connections
+0, 1
+

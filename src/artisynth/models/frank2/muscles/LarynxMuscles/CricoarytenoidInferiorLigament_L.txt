@@ -1,0 +1,9 @@
+# Description of *CricoarytenoidInferiorLigament_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.141724, -0.005400, 0.024199, type=FemNode, attach=cricoid
+1, 0.140188, -0.009800, 0.030288, type=FemNode, attach=arytenoid_L
+
+connections
+0, 1
+

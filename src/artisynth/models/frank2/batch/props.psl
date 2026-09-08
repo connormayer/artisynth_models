@@ -1,0 +1,27 @@
+# 10mm condition
+
+"models/FrankMechModel/MuscleExciters/tongue/exciters/GGP:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/GGM:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/GGA:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/STY:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/MH:excitation" 		= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/HG:excitation" 		= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/TRANS:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/VERT:excitation" 	= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/SL:excitation" 		= {%0% %0.25%}
+"models/FrankMechModel/MuscleExciters/tongue/exciters/IL:excitation" 		= {%0% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/bi_open:excitation"				= {%0.01%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/bi_close:excitation"				= {%0%}
+
+# 5mm condition
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/GGP:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/GGM:excitation" 	= {%0% %0.1% %0.25%}
+#""models/FrankMechModel/MuscleExciters/tongue/exciters/STY:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/MH:excitation" 		= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/HG:excitation" 		= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/TRANS:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/VERT:excitation" 	= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/SL:excitation" 		= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/IL:excitation" 		= {%0% %0.1% %0.25%}
+#"models/FrankMechModel/MuscleExciters/tongue/exciters/bi_open:excitation"				= {%0%}
+#""models/FrankMechModel/MuscleExciters/tongue/exciters/bi_close:excitation"				= {%0.0015%}

@@ -1,0 +1,9 @@
+# Description of *CriothyroidParsRecta_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.122130, -0.004400, 0.029009, type=FemNode, attach=thyroid
+1, 0.124257, -0.003600, 0.012733, type=FemNode, attach=cricoid
+
+connections
+0, 1
+

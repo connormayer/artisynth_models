@@ -1,0 +1,9 @@
+# Description of *Geniohyoid_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.078270, 0.003460, 0.063946, type=Particle, attach=jaw
+1, 0.113056, 0.001763, 0.061595, type=Particle, attach=hyoid
+
+connections
+0, 1
+

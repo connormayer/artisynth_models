@@ -1,0 +1,20 @@
+# Description of *LongissimusCapitis_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.169286, -0.027153, 0.071382, type=FrameMarker, attach=C4
+1, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+2, 0.170761, -0.027244, 0.060409, type=FrameMarker, attach=C5
+3, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+4, 0.178846, -0.034881, 0.044379, type=FrameMarker, attach=C6
+5, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+6, 0.219815, -0.031104, 0.027155, type=FrameMarker, attach=C7
+7, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+8, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+9, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+
+connections
+0, 1
+2, 3
+4, 5
+6, 7
+8, 9

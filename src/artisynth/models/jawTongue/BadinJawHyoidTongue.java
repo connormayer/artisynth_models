@@ -6,7 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
+//yjc_20260630
+import artisynth.core.probes.NumericInputProbe;
+import artisynth.core.probes.Probe;
+import maspack.interpolation.Interpolation.Order;
+//yjc_20260630
 import maspack.geometry.PolygonalMesh;
 import maspack.geometry.Vertex3d;
 import maspack.matrix.Point3d;
@@ -458,6 +462,38 @@ public class BadinJawHyoidTongue extends BadinJawHyoid {
       }
       getMeshContour(tongueContour, tonguevertices, null);
       return tongueContour;
+
+
+   }
+   //yjc_20260630
+   public FemMuscleModel getTongue() {
+      return tongue;
    }
 
+   public void addExciterProbe(String exciterName, double maxExcitation) {
+      if (getInputProbes().get (exciterName + " exciter probe") == null) {
+         NumericInputProbe nip =
+            new NumericInputProbe(this, "models/jawmodel/models/tongue/exciters/" + exciterName
+            + ":excitation", 0, 0.5);
+         nip.addData (
+            new double[] { 0.00, 0.0,
+                           0.03, 0.0,
+                           0.40, maxExcitation,
+                           0.50, maxExcitation
+                         }, NumericInputProbe.EXPLICIT_TIME);
+         nip.setName (exciterName + " exciter probe");
+         nip.setInterpolationOrder (Order.CubicStep);
+         addInputProbe (nip);
+         System.out.println("adding probe");
+         System.out.println(exciterName + " " + maxExcitation);
+      }
+   }
+
+   public void removeExciterProbe(String exciterName) {
+      Probe p = getInputProbes().get(exciterName + " exciter probe");
+      if (p != null) {
+         removeInputProbe(p);
+      }
+   }
+   //yjc_20260630
 }

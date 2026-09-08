@@ -1,0 +1,9 @@
+# Description of *AnteriorMylohyoid_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.091861, -0.020766, 0.068601, type=Particle, attach=jaw
+1, 0.111289, -0.002017, 0.060928, type=Particle, attach=hyoid
+
+connections
+0, 1
+

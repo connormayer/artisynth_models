@@ -1,0 +1,8 @@
+# Description of *SemispinalisCervicis_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+1, 0.225373, 0.027409, 0.018814, type=FrameMarker, attach=base
+
+connections
+0, 1

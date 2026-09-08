@@ -1,0 +1,37 @@
+# Description of *LongusColli_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.172674, 0.026140, -0.004249, type=FrameMarker, attach=base
+1, 0.161332, 0.024474, 0.008355, type=FrameMarker, attach=C7
+2, 0.152922, 0.022511, 0.027707, type=FrameMarker, attach=C6
+3, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+4, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+5, 0.172674, 0.026140, -0.004249, type=FrameMarker, attach=base
+6, 0.161332, 0.024474, 0.008355, type=FrameMarker, attach=C7
+7, 0.152922, 0.022511, 0.027707, type=FrameMarker, attach=C6
+8, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+9, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+10, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+11, 0.172674, 0.026140, -0.004249, type=FrameMarker, attach=base
+12, 0.161332, 0.024474, 0.008355, type=FrameMarker, attach=C7
+13, 0.152922, 0.022511, 0.027707, type=FrameMarker, attach=C6
+14, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+15, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+16, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+17, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+18, 0.172674, 0.026140, -0.004249, type=FrameMarker, attach=base
+19, 0.161332, 0.024474, 0.008355, type=FrameMarker, attach=C7
+20, 0.152922, 0.022511, 0.027707, type=FrameMarker, attach=C6
+21, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+22, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+23, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+24, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+25, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+26, 0.137379, 0.019303, 0.114825, type=FrameMarker, attach=C1
+
+connections
+0, 1, 2, 3, 4
+5, 6, 7, 8, 9, 10
+11, 12, 13, 14, 15, 16, 17
+18, 19, 20, 21
+22, 23, 24, 25, 26

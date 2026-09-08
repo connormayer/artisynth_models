@@ -1,0 +1,18 @@
+# Description of *PalatoglossusPosterior_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.131317, -0.000000, 0.103896, type=FemMarker, attach=softPalate
+1, 0.129646, 0.004000, 0.107092, type=FemMarker, attach=softPalate
+2, 0.128864, 0.007500, 0.109186, type=FemMarker, attach=softPalate
+3, 0.127976, 0.012000, 0.110287, type=FemMarker, attach=softPalate
+4, 0.125987, 0.016750, 0.110499, type=FemMarker, attach=softPalate
+5, 0.123929, 0.021250, 0.107702, type=FemNode, attach=pharynx
+6, 0.121757, 0.023780, 0.104122, type=FemNode, attach=pharynx
+7, 0.119848, 0.024340, 0.100092, type=FemNode, attach=pharynx
+8, 0.116334, 0.024700, 0.095439, type=FemNode, attach=pharynx
+9, 0.113051, 0.024634, 0.091885, type=FemNode, attach=pharynx
+10, 0.107957, 0.019496, 0.091430, type=FemNode, attach=tongue
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+

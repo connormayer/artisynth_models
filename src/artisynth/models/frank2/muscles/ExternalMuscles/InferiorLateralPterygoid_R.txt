@@ -1,0 +1,9 @@
+# Description of *InferiorLateralPterygoid_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.117380, 0.018573, 0.136443, type=Particle, attach=maxilla
+1, 0.133056, 0.042912, 0.130482, type=Particle, attach=jaw
+
+connections
+0, 1
+

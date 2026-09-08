@@ -1,0 +1,24 @@
+# Description of *SpleniusCapitis_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.236132, 0.001549, 0.031951, type=FrameMarker, attach=C7
+1, 0.214221, 0.013609, 0.051508, type=FrameMarker, attach=C6
+2, 0.203599, 0.020128, 0.061497, type=FrameMarker, attach=C5
+3, 0.191953, 0.026374, 0.074490, type=FrameMarker, attach=C4
+4, 0.183608, 0.030790, 0.083093, type=FrameMarker, attach=C3
+5, 0.173213, 0.036250, 0.092419, type=FrameMarker, attach=C2
+6, 0.150688, 0.047730, 0.112494, type=FrameMarker, attach=C1
+7, 0.144766, 0.052068, 0.120483, type=FrameMarker, attach=cranium
+8, 0.239498, 0.000695, -0.036735, type=FrameMarker, attach=base
+9, 0.210988, 0.018060, 0.023810, type=FrameMarker, attach=C7
+10, 0.193233, 0.026973, 0.048396, type=FrameMarker, attach=C6
+11, 0.186080, 0.031202, 0.060248, type=FrameMarker, attach=C5
+12, 0.177961, 0.035263, 0.072778, type=FrameMarker, attach=C4
+13, 0.172134, 0.038145, 0.081111, type=FrameMarker, attach=C3
+14, 0.164645, 0.041706, 0.091407, type=FrameMarker, attach=C2
+15, 0.150714, 0.049197, 0.112474, type=FrameMarker, attach=C1
+16, 0.144766, 0.052068, 0.120483, type=FrameMarker, attach=cranium
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7
+8, 9, 10, 11, 12, 13, 14, 15, 16

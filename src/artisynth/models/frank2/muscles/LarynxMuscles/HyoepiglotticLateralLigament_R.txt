@@ -1,0 +1,9 @@
+# Description of *HyoepiglotticLateralLigament_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.133870, 0.012600, 0.060051, type=FemNode, attach=epiglottis
+1, 0.125647, 0.019000, 0.061650, type=FemNode, attach=hyoid
+
+connections
+0, 1
+

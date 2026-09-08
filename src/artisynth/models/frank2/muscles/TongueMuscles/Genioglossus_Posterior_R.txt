@@ -1,0 +1,146 @@
+# Description of *Genioglossus_Posterior_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.079681, 0.001770, 0.064184, type=FemMarker, attach=tongue
+1, 0.083541, 0.002377, 0.064144, type=FemMarker, attach=tongue
+2, 0.086805, 0.002499, 0.064062, type=FemMarker, attach=tongue
+3, 0.090622, 0.002844, 0.064087, type=FemMarker, attach=tongue
+4, 0.094675, 0.003388, 0.063617, type=FemMarker, attach=tongue
+5, 0.100862, 0.004255, 0.063003, type=FemMarker, attach=tongue
+6, 0.110298, 0.005617, 0.062194, type=FemMarker, attach=tongue
+7, 0.111069, 0.006128, 0.062617, type=FemMarker, attach=tongue
+8, 0.113231, 0.006652, 0.062882, type=FemMarker, attach=tongue
+9, 0.115990, 0.007215, 0.063106, type=FemMarker, attach=tongue
+10, 0.120560, 0.008090, 0.063015, type=FemMarker, attach=tongue
+11, 0.124843, 0.009077, 0.062930, type=FemMarker, attach=tongue
+12, 0.079323, 0.001696, 0.067057, type=FemMarker, attach=tongue
+13, 0.083485, 0.003512, 0.067447, type=FemMarker, attach=tongue
+14, 0.086866, 0.003770, 0.067732, type=FemMarker, attach=tongue
+15, 0.090749, 0.004499, 0.067974, type=FemMarker, attach=tongue
+16, 0.094910, 0.005032, 0.068169, type=FemMarker, attach=tongue
+17, 0.100430, 0.005557, 0.068056, type=FemMarker, attach=tongue
+18, 0.106296, 0.006698, 0.068644, type=FemMarker, attach=tongue
+19, 0.109567, 0.007238, 0.068538, type=FemMarker, attach=tongue
+20, 0.112722, 0.007458, 0.068681, type=FemMarker, attach=tongue
+21, 0.116606, 0.008058, 0.069191, type=FemMarker, attach=tongue
+22, 0.121605, 0.008553, 0.070038, type=FemMarker, attach=tongue
+23, 0.126525, 0.009490, 0.070614, type=FemMarker, attach=tongue
+24, 0.079001, 0.001795, 0.069938, type=FemMarker, attach=tongue
+25, 0.083456, 0.003611, 0.070493, type=FemMarker, attach=tongue
+26, 0.087083, 0.003961, 0.070921, type=FemMarker, attach=tongue
+27, 0.090515, 0.004572, 0.071272, type=FemMarker, attach=tongue
+28, 0.094926, 0.005531, 0.071776, type=FemMarker, attach=tongue
+29, 0.099990, 0.006165, 0.072169, type=FemMarker, attach=tongue
+30, 0.105048, 0.006959, 0.073013, type=FemMarker, attach=tongue
+31, 0.108487, 0.007213, 0.073464, type=FemMarker, attach=tongue
+32, 0.112729, 0.007429, 0.074213, type=FemMarker, attach=tongue
+33, 0.116981, 0.007729, 0.075207, type=FemMarker, attach=tongue
+34, 0.122093, 0.008346, 0.076525, type=FemMarker, attach=tongue
+35, 0.127508, 0.009377, 0.078118, type=FemMarker, attach=tongue
+36, 0.078936, 0.001615, 0.073025, type=FemMarker, attach=tongue
+37, 0.083435, 0.003850, 0.073496, type=FemMarker, attach=tongue
+38, 0.086847, 0.004310, 0.073964, type=FemMarker, attach=tongue
+39, 0.090387, 0.005076, 0.074454, type=FemMarker, attach=tongue
+40, 0.094402, 0.005875, 0.075115, type=FemMarker, attach=tongue
+41, 0.099044, 0.006429, 0.076293, type=FemMarker, attach=tongue
+42, 0.103225, 0.007116, 0.077644, type=FemMarker, attach=tongue
+43, 0.107785, 0.007579, 0.078879, type=FemMarker, attach=tongue
+44, 0.112507, 0.007504, 0.080634, type=FemMarker, attach=tongue
+45, 0.117114, 0.007832, 0.082668, type=FemMarker, attach=tongue
+46, 0.122132, 0.008863, 0.084649, type=FemMarker, attach=tongue
+47, 0.127220, 0.009277, 0.086624, type=FemMarker, attach=tongue
+48, 0.093384, 0.006191, 0.078775, type=FemMarker, attach=tongue
+49, 0.097472, 0.006571, 0.080676, type=FemMarker, attach=tongue
+50, 0.101048, 0.006805, 0.082559, type=FemMarker, attach=tongue
+51, 0.105777, 0.006494, 0.085439, type=FemMarker, attach=tongue
+52, 0.109752, 0.006872, 0.088100, type=FemMarker, attach=tongue
+53, 0.113884, 0.007278, 0.090649, type=FemMarker, attach=tongue
+54, 0.117722, 0.007687, 0.093468, type=FemMarker, attach=tongue
+55, 0.121655, 0.008418, 0.096108, type=FemMarker, attach=tongue
+56, 0.090073, 0.005759, 0.077609, type=FemMarker, attach=tongue
+57, 0.093651, 0.006121, 0.082616, type=FemMarker, attach=tongue
+58, 0.097083, 0.006288, 0.086401, type=FemMarker, attach=tongue
+59, 0.099913, 0.006233, 0.090025, type=FemMarker, attach=tongue
+60, 0.103046, 0.006503, 0.093729, type=FemMarker, attach=tongue
+61, 0.106175, 0.006773, 0.097432, type=FemMarker, attach=tongue
+62, 0.109304, 0.007043, 0.101134, type=FemMarker, attach=tongue
+63, 0.112433, 0.007312, 0.104839, type=FemMarker, attach=tongue
+64, 0.078227, 0.000000, 0.063519, type=FemMarker, attach=tongue
+65, 0.082922, 0.000000, 0.063626, type=FemMarker, attach=tongue
+66, 0.086907, 0.000000, 0.063524, type=FemMarker, attach=tongue
+67, 0.090934, 0.000000, 0.063603, type=FemMarker, attach=tongue
+68, 0.094650, 0.000000, 0.063365, type=FemMarker, attach=tongue
+69, 0.101132, 0.000000, 0.062974, type=FemMarker, attach=tongue
+70, 0.109787, 0.000000, 0.062376, type=FemMarker, attach=tongue
+71, 0.111030, -0.000000, 0.062618, type=FemMarker, attach=tongue
+72, 0.113290, 0.000000, 0.062689, type=FemMarker, attach=tongue
+73, 0.115025, 0.000000, 0.062651, type=FemMarker, attach=tongue
+74, 0.116759, 0.000000, 0.062613, type=FemMarker, attach=tongue
+75, 0.119493, 0.000000, 0.062554, type=FemMarker, attach=tongue
+76, 0.078177, 0.000000, 0.066776, type=FemMarker, attach=tongue
+77, 0.082577, 0.000000, 0.067062, type=FemMarker, attach=tongue
+78, 0.086527, 0.000000, 0.067024, type=FemMarker, attach=tongue
+79, 0.090604, 0.000000, 0.067459, type=FemMarker, attach=tongue
+80, 0.094657, 0.000000, 0.067193, type=FemMarker, attach=tongue
+81, 0.100005, 0.000000, 0.067302, type=FemMarker, attach=tongue
+82, 0.104092, 0.000000, 0.067388, type=FemMarker, attach=tongue
+83, 0.108194, 0.000000, 0.067482, type=FemMarker, attach=tongue
+84, 0.112069, 0.000000, 0.067967, type=FemMarker, attach=tongue
+85, 0.115437, 0.000000, 0.068663, type=FemMarker, attach=tongue
+86, 0.119084, 0.000000, 0.069266, type=FemMarker, attach=tongue
+87, 0.123163, 0.000000, 0.069848, type=FemMarker, attach=tongue
+88, 0.078092, 0.000000, 0.069552, type=FemMarker, attach=tongue
+89, 0.082227, 0.000000, 0.069960, type=FemMarker, attach=tongue
+90, 0.086254, 0.000000, 0.069936, type=FemMarker, attach=tongue
+91, 0.090469, 0.000000, 0.070095, type=FemMarker, attach=tongue
+92, 0.094606, 0.000000, 0.070469, type=FemMarker, attach=tongue
+93, 0.099367, 0.000000, 0.070901, type=FemMarker, attach=tongue
+94, 0.103165, 0.000000, 0.071582, type=FemMarker, attach=tongue
+95, 0.107772, 0.000000, 0.072264, type=FemMarker, attach=tongue
+96, 0.111418, 0.000000, 0.073444, type=FemMarker, attach=tongue
+97, 0.116070, 0.000000, 0.074624, type=FemMarker, attach=tongue
+98, 0.120900, 0.000000, 0.076293, type=FemMarker, attach=tongue
+99, 0.125313, 0.000000, 0.077481, type=FemMarker, attach=tongue
+100, 0.077965, 0.000000, 0.072827, type=FemMarker, attach=tongue
+101, 0.082259, 0.000000, 0.073154, type=FemMarker, attach=tongue
+102, 0.085898, 0.000000, 0.073299, type=FemMarker, attach=tongue
+103, 0.089965, 0.000000, 0.073457, type=FemMarker, attach=tongue
+104, 0.094206, 0.000000, 0.073915, type=FemMarker, attach=tongue
+105, 0.098314, 0.000000, 0.074931, type=FemMarker, attach=tongue
+106, 0.102251, 0.000000, 0.076285, type=FemMarker, attach=tongue
+107, 0.106714, 0.000000, 0.077687, type=FemMarker, attach=tongue
+108, 0.111248, 0.000000, 0.079471, type=FemMarker, attach=tongue
+109, 0.115781, 0.000000, 0.081558, type=FemMarker, attach=tongue
+110, 0.120192, 0.000000, 0.083917, type=FemMarker, attach=tongue
+111, 0.124699, 0.000000, 0.085988, type=FemMarker, attach=tongue
+112, 0.093009, 0.000000, 0.078198, type=FemMarker, attach=tongue
+113, 0.096859, 0.000000, 0.080315, type=FemMarker, attach=tongue
+114, 0.100669, 0.000000, 0.082447, type=FemMarker, attach=tongue
+115, 0.104476, 0.000000, 0.085106, type=FemMarker, attach=tongue
+116, 0.107873, 0.000000, 0.087477, type=FemMarker, attach=tongue
+117, 0.111641, 0.000000, 0.090399, type=FemMarker, attach=tongue
+118, 0.115722, 0.000000, 0.092937, type=FemMarker, attach=tongue
+119, 0.119686, 0.000000, 0.095747, type=FemMarker, attach=tongue
+120, 0.089433, 0.000000, 0.076944, type=FemMarker, attach=tongue
+121, 0.092237, 0.000000, 0.080242, type=FemMarker, attach=tongue
+122, 0.096376, 0.000000, 0.084768, type=FemMarker, attach=tongue
+123, 0.099316, 0.000000, 0.089106, type=FemMarker, attach=tongue
+124, 0.101712, 0.000000, 0.092684, type=FemMarker, attach=tongue
+125, 0.104651, 0.000000, 0.096976, type=FemMarker, attach=tongue
+126, 0.107579, 0.000000, 0.101267, type=FemMarker, attach=tongue
+127, 0.111021, 0.000000, 0.105365, type=FemMarker, attach=tongue
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
+36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
+36, 37, 38, 48, 49, 50, 51, 52, 53, 54, 55
+36, 37, 38, 56, 57, 58, 59, 60, 61, 62, 63
+64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75
+76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87
+88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99
+100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
+100, 101, 102, 112, 113, 114, 115, 116, 117, 118, 119
+100, 101, 102, 120, 121, 122, 123, 124, 125, 126, 127
+

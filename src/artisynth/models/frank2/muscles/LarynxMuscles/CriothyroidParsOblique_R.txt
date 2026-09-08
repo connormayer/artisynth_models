@@ -1,0 +1,9 @@
+# Description of *CriothyroidParsOblique_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.138527, 0.015700, 0.026329, type=FemNode, attach=thyroid
+1, 0.125011, 0.005500, 0.013301, type=FemNode, attach=cricoid
+
+connections
+0, 1
+

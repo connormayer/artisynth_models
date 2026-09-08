@@ -1,0 +1,14 @@
+# Description of *Sternocleidomastoid_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.113951, -0.006230, -0.019828, type=FrameMarker, attach=base
+1, 0.142919, -0.051238, 0.121913, type=FrameMarker, attach=cranium
+2, 0.128329, -0.059135, -0.031325, type=FrameMarker, attach=base
+3, 0.142919, -0.051238, 0.121913, type=FrameMarker, attach=cranium
+4, 0.128329, -0.059135, -0.031325, type=FrameMarker, attach=base
+5, 0.166601, -0.043762, 0.123667, type=FrameMarker, attach=cranium
+
+connections
+0, 1
+2, 3
+4, 5

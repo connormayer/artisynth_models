@@ -1,0 +1,20 @@
+# Description of *LongissimusCervicis_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+1, 0.165355, -0.026240, 0.105159, type=FrameMarker, attach=C2
+2, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+3, 0.166905, -0.026998, 0.086772, type=FrameMarker, attach=C3
+4, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+5, 0.169286, -0.027153, 0.071382, type=FrameMarker, attach=C4
+6, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+7, 0.170761, -0.027244, 0.060409, type=FrameMarker, attach=C5
+8, 0.233246, -0.041868, -0.003168, type=FrameMarker, attach=base
+9, 0.178846, -0.034881, 0.044379, type=FrameMarker, attach=C6
+
+connections
+0, 1
+2, 3
+4, 5
+6, 7
+8, 9

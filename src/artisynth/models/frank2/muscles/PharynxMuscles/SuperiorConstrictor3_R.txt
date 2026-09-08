@@ -1,0 +1,59 @@
+# Description of *SuperiorConstrictor3_R* muscle bundle. Created on 2015.09.23_17:07:45 PDT. 
+
+points
+0, 0.139895, -0.000015, 0.095898, type=FemMarker, attach=pharynx
+1, 0.139789, 0.002929, 0.096083, type=FemMarker, attach=pharynx
+2, 0.139539, 0.005887, 0.096260, type=FemMarker, attach=pharynx
+3, 0.139120, 0.008801, 0.096459, type=FemMarker, attach=pharynx
+4, 0.138475, 0.011675, 0.096763, type=FemMarker, attach=pharynx
+5, 0.137545, 0.014492, 0.097056, type=FemMarker, attach=pharynx
+6, 0.136271, 0.017093, 0.097409, type=FemMarker, attach=pharynx
+7, 0.134513, 0.019450, 0.097850, type=FemMarker, attach=pharynx
+8, 0.132368, 0.021419, 0.098108, type=FemMarker, attach=pharynx
+9, 0.129916, 0.022838, 0.098657, type=FemMarker, attach=pharynx
+10, 0.127177, 0.023747, 0.099165, type=FemMarker, attach=pharynx
+11, 0.124331, 0.024225, 0.099557, type=FemMarker, attach=pharynx
+12, 0.121433, 0.024283, 0.099825, type=FemMarker, attach=pharynx
+13, 0.118447, 0.024132, 0.099904, type=FemMarker, attach=pharynx
+14, 0.115180, 0.023859, 0.100321, type=FemMarker, attach=pharynx
+15, 0.112730, 0.023869, 0.100478, type=FemNode, attach=jaw
+16, 0.140395, 0.000017, 0.092146, type=FemMarker, attach=pharynx
+17, 0.140256, 0.002990, 0.092558, type=FemMarker, attach=pharynx
+18, 0.140002, 0.005921, 0.092962, type=FemMarker, attach=pharynx
+19, 0.139614, 0.008826, 0.093327, type=FemMarker, attach=pharynx
+20, 0.139026, 0.011800, 0.093671, type=FemMarker, attach=pharynx
+21, 0.138157, 0.014556, 0.093935, type=FemMarker, attach=pharynx
+22, 0.136910, 0.017158, 0.094318, type=FemMarker, attach=pharynx
+23, 0.135225, 0.019597, 0.094637, type=FemMarker, attach=pharynx
+24, 0.133199, 0.021619, 0.094789, type=FemMarker, attach=pharynx
+25, 0.130766, 0.023150, 0.095399, type=FemMarker, attach=pharynx
+26, 0.128077, 0.024270, 0.095891, type=FemMarker, attach=pharynx
+27, 0.125306, 0.024956, 0.096323, type=FemMarker, attach=pharynx
+28, 0.122382, 0.025124, 0.096746, type=FemMarker, attach=pharynx
+29, 0.119404, 0.024875, 0.097029, type=FemMarker, attach=pharynx
+30, 0.116430, 0.024597, 0.097402, type=FemMarker, attach=pharynx
+31, 0.113242, 0.024406, 0.097763, type=FemMarker, attach=pharynx
+32, 0.112364, 0.024424, 0.097895, type=FemNode, attach=jaw
+33, 0.140944, 0.000019, 0.087959, type=FemMarker, attach=pharynx
+34, 0.140762, 0.002954, 0.088647, type=FemMarker, attach=pharynx
+35, 0.140501, 0.005836, 0.089281, type=FemMarker, attach=pharynx
+36, 0.140146, 0.008791, 0.089801, type=FemMarker, attach=pharynx
+37, 0.139569, 0.011653, 0.090032, type=FemMarker, attach=pharynx
+38, 0.138731, 0.014474, 0.090187, type=FemMarker, attach=pharynx
+39, 0.137560, 0.017127, 0.090500, type=FemMarker, attach=pharynx
+40, 0.135933, 0.019613, 0.090842, type=FemMarker, attach=pharynx
+41, 0.133952, 0.021725, 0.091090, type=FemMarker, attach=pharynx
+42, 0.131688, 0.023340, 0.091959, type=FemMarker, attach=pharynx
+43, 0.129128, 0.024687, 0.092721, type=FemMarker, attach=pharynx
+44, 0.126667, 0.025331, 0.093614, type=FemMarker, attach=pharynx
+45, 0.123572, 0.025670, 0.094214, type=FemMarker, attach=pharynx
+46, 0.120645, 0.025647, 0.094467, type=FemMarker, attach=pharynx
+47, 0.117703, 0.025224, 0.094546, type=FemMarker, attach=pharynx
+48, 0.114683, 0.024810, 0.094826, type=FemMarker, attach=pharynx
+49, 0.112184, 0.024744, 0.095055, type=FemNode, attach=jaw
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+

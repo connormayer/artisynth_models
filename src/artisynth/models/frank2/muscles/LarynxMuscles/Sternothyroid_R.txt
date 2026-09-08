@@ -1,0 +1,9 @@
+# Description of *Sternothyroid_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.129951, 0.018800, 0.033709, type=FemNode, attach=thyroid
+1, 0.134675, 0.008100, -0.053570, type=FemNode, attach=ground
+
+connections
+0, 1
+

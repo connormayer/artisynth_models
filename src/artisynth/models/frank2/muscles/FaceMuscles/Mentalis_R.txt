@@ -1,0 +1,19 @@
+# Description of *Mentalis_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.063095, 0.004759, 0.075551, type=FemMarker, attach=face
+1, 0.062775, 0.003753, 0.072699, type=FemMarker, attach=face
+2, 0.058477, 0.001952, 0.068274, type=FemMarker, attach=face
+3, 0.058078, 0.001271, 0.067033, type=FemMarker, attach=face
+4, 0.056854, 0.003543, 0.062545, type=FemMarker, attach=face
+5, 0.058699, 0.004833, 0.065173, type=FemMarker, attach=face
+6, 0.059866, 0.006089, 0.066418, type=FemMarker, attach=face
+7, 0.062001, 0.005560, 0.067390, type=FemMarker, attach=face
+8, 0.064667, 0.007042, 0.069740, type=FemMarker, attach=face
+9, 0.065604, 0.009253, 0.071929, type=FemMarker, attach=face
+10, 0.066881, 0.012298, 0.075211, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4
+5, 6, 7, 8, 9, 10
+

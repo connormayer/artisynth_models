@@ -1,0 +1,136 @@
+# Description of *InferiorConstrictor1_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.140348, 0.000000, 0.091765, type=FemMarker, attach=pharynx
+1, 0.140585, -0.001317, 0.089369, type=FemMarker, attach=pharynx
+2, 0.140732, -0.002464, 0.087767, type=FemMarker, attach=pharynx
+3, 0.140901, -0.004397, 0.085638, type=FemMarker, attach=pharynx
+4, 0.141015, -0.006740, 0.083567, type=FemMarker, attach=pharynx
+5, 0.141046, -0.009168, 0.081744, type=FemMarker, attach=pharynx
+6, 0.141022, -0.010918, 0.080554, type=FemMarker, attach=pharynx
+7, 0.140967, -0.012630, 0.079454, type=FemMarker, attach=pharynx
+8, 0.140878, -0.014359, 0.078390, type=FemMarker, attach=pharynx
+9, 0.140657, -0.016948, 0.076802, type=FemMarker, attach=pharynx
+10, 0.140478, -0.018466, 0.075782, type=FemMarker, attach=pharynx
+11, 0.140386, -0.019821, 0.074672, type=FemMarker, attach=pharynx
+12, 0.140536, -0.021205, 0.073099, type=FemMarker, attach=pharynx
+13, 0.140670, -0.022079, 0.071908, type=FemMarker, attach=pharynx
+14, 0.140620, -0.023257, 0.070596, type=FemMarker, attach=pharynx
+15, 0.140430, -0.024291, 0.069161, type=FemMarker, attach=pharynx
+16, 0.140535, -0.024567, 0.067944, type=FemMarker, attach=pharynx
+17, 0.140887, -0.024784, 0.066108, type=FemMarker, attach=pharynx
+18, 0.141109, -0.025256, 0.063669, type=FemMarker, attach=pharynx
+19, 0.141290, -0.025524, 0.061794, type=FemMarker, attach=pharynx
+20, 0.141466, -0.025720, 0.059957, type=FemMarker, attach=pharynx
+21, 0.141622, -0.025851, 0.058156, type=FemMarker, attach=pharynx
+22, 0.141748, -0.025914, 0.056433, type=FemMarker, attach=pharynx
+23, 0.141820, -0.025912, 0.054892, type=FemMarker, attach=pharynx
+24, 0.141833, -0.025853, 0.053425, type=FemMarker, attach=pharynx
+25, 0.141759, -0.025753, 0.052086, type=FemMarker, attach=pharynx
+26, 0.141671, -0.025638, 0.050869, type=FemMarker, attach=pharynx
+27, 0.141039, -0.025500, 0.049462, type=FemMarker, attach=pharynx
+28, 0.140537, -0.025364, 0.049149, type=FemMarker, attach=pharynx
+29, 0.139966, -0.025147, 0.049156, type=FemNode, attach=thyroid
+30, 0.141332, -0.000000, 0.084868, type=FemMarker, attach=pharynx
+31, 0.141646, -0.002506, 0.082812, type=FemMarker, attach=pharynx
+32, 0.142043, -0.005524, 0.080196, type=FemMarker, attach=pharynx
+33, 0.142296, -0.008121, 0.078325, type=FemMarker, attach=pharynx
+34, 0.142484, -0.010710, 0.076673, type=FemMarker, attach=pharynx
+35, 0.142604, -0.013475, 0.075077, type=FemMarker, attach=pharynx
+36, 0.142836, -0.015417, 0.073499, type=FemMarker, attach=pharynx
+37, 0.143004, -0.017392, 0.071958, type=FemMarker, attach=pharynx
+38, 0.143004, -0.019289, 0.070541, type=FemMarker, attach=pharynx
+39, 0.142996, -0.021127, 0.068568, type=FemMarker, attach=pharynx
+40, 0.142816, -0.022740, 0.066376, type=FemMarker, attach=pharynx
+41, 0.143007, -0.023699, 0.063855, type=FemMarker, attach=pharynx
+42, 0.143112, -0.024508, 0.061260, type=FemMarker, attach=pharynx
+43, 0.143164, -0.025179, 0.058224, type=FemMarker, attach=pharynx
+44, 0.143609, -0.025366, 0.054722, type=FemMarker, attach=pharynx
+45, 0.143031, -0.025561, 0.052007, type=FemMarker, attach=pharynx
+46, 0.143016, -0.025460, 0.049376, type=FemMarker, attach=pharynx
+47, 0.142480, -0.025571, 0.048073, type=FemMarker, attach=pharynx
+48, 0.141869, -0.025419, 0.046277, type=FemMarker, attach=pharynx
+49, 0.140567, -0.024882, 0.045751, type=FemNode, attach=thyroid
+50, 0.142274, -0.000000, 0.079983, type=FemMarker, attach=pharynx
+51, 0.142606, -0.002920, 0.078243, type=FemMarker, attach=pharynx
+52, 0.142959, -0.005331, 0.076443, type=FemMarker, attach=pharynx
+53, 0.143483, -0.008102, 0.073943, type=FemMarker, attach=pharynx
+54, 0.143972, -0.010925, 0.071662, type=FemMarker, attach=pharynx
+55, 0.144339, -0.012876, 0.070024, type=FemMarker, attach=pharynx
+56, 0.144694, -0.014856, 0.068403, type=FemMarker, attach=pharynx
+57, 0.145007, -0.016772, 0.066841, type=FemMarker, attach=pharynx
+58, 0.145201, -0.018708, 0.065356, type=FemMarker, attach=pharynx
+59, 0.144968, -0.020484, 0.064578, type=FemMarker, attach=pharynx
+60, 0.144684, -0.022164, 0.063071, type=FemMarker, attach=pharynx
+61, 0.144873, -0.023195, 0.060522, type=FemMarker, attach=pharynx
+62, 0.145552, -0.023480, 0.057788, type=FemMarker, attach=pharynx
+63, 0.145532, -0.024179, 0.055007, type=FemMarker, attach=pharynx
+64, 0.145817, -0.024241, 0.052754, type=FemMarker, attach=pharynx
+65, 0.146025, -0.024295, 0.050073, type=FemMarker, attach=pharynx
+66, 0.145433, -0.024669, 0.048504, type=FemMarker, attach=pharynx
+67, 0.144704, -0.025118, 0.045881, type=FemMarker, attach=pharynx
+68, 0.144132, -0.025441, 0.044147, type=FemMarker, attach=pharynx
+69, 0.143171, -0.025752, 0.043248, type=FemMarker, attach=pharynx
+70, 0.142120, -0.025770, 0.042116, type=FemMarker, attach=pharynx
+71, 0.141254, -0.025535, 0.041696, type=FemMarker, attach=pharynx
+72, 0.140307, -0.025299, 0.041512, type=FemNode, attach=thyroid
+73, 0.143723, -0.000000, 0.074017, type=FemMarker, attach=pharynx
+74, 0.144108, -0.002429, 0.072343, type=FemMarker, attach=pharynx
+75, 0.144601, -0.005894, 0.070208, type=FemMarker, attach=pharynx
+76, 0.145153, -0.008731, 0.067951, type=FemMarker, attach=pharynx
+77, 0.145466, -0.011517, 0.066558, type=FemMarker, attach=pharynx
+78, 0.145973, -0.014415, 0.064483, type=FemMarker, attach=pharynx
+79, 0.146333, -0.016341, 0.062919, type=FemMarker, attach=pharynx
+80, 0.146615, -0.018284, 0.061365, type=FemMarker, attach=pharynx
+81, 0.146673, -0.020213, 0.059925, type=FemMarker, attach=pharynx
+82, 0.146587, -0.022020, 0.057862, type=FemMarker, attach=pharynx
+83, 0.146932, -0.023019, 0.053733, type=FemMarker, attach=pharynx
+84, 0.146960, -0.023439, 0.051099, type=FemMarker, attach=pharynx
+85, 0.146808, -0.023849, 0.048247, type=FemMarker, attach=pharynx
+86, 0.146226, -0.024361, 0.045091, type=FemMarker, attach=pharynx
+87, 0.145545, -0.025107, 0.042735, type=FemMarker, attach=pharynx
+88, 0.144439, -0.025813, 0.041270, type=FemMarker, attach=pharynx
+89, 0.143329, -0.026052, 0.039827, type=FemMarker, attach=pharynx
+90, 0.141796, -0.025708, 0.039168, type=FemMarker, attach=pharynx
+91, 0.139871, -0.025236, 0.039345, type=FemNode, attach=thyroid
+92, 0.146212, 0.000000, 0.065391, type=FemMarker, attach=pharynx
+93, 0.146589, -0.004515, 0.063618, type=FemMarker, attach=pharynx
+94, 0.147029, -0.009120, 0.061575, type=FemMarker, attach=pharynx
+95, 0.147377, -0.012871, 0.060018, type=FemMarker, attach=pharynx
+96, 0.147798, -0.015840, 0.058128, type=FemMarker, attach=pharynx
+97, 0.147995, -0.018645, 0.056441, type=FemMarker, attach=pharynx
+98, 0.148404, -0.020633, 0.052632, type=FemMarker, attach=pharynx
+99, 0.148461, -0.021602, 0.049989, type=FemMarker, attach=pharynx
+100, 0.148251, -0.022447, 0.047296, type=FemMarker, attach=pharynx
+101, 0.147805, -0.023024, 0.044969, type=FemMarker, attach=pharynx
+102, 0.147082, -0.024143, 0.042539, type=FemMarker, attach=pharynx
+103, 0.146091, -0.025451, 0.039079, type=FemMarker, attach=pharynx
+104, 0.144378, -0.025916, 0.037293, type=FemMarker, attach=pharynx
+105, 0.142782, -0.025547, 0.036564, type=FemMarker, attach=pharynx
+106, 0.141057, -0.025447, 0.036174, type=FemMarker, attach=pharynx
+107, 0.139219, -0.025185, 0.036801, type=FemNode, attach=thyroid
+108, 0.148315, 0.000000, 0.058790, type=FemMarker, attach=pharynx
+109, 0.148423, -0.003752, 0.057817, type=FemMarker, attach=pharynx
+110, 0.148614, -0.008375, 0.056278, type=FemMarker, attach=pharynx
+111, 0.148736, -0.011230, 0.055362, type=FemMarker, attach=pharynx
+112, 0.148850, -0.014111, 0.054463, type=FemMarker, attach=pharynx
+113, 0.149019, -0.016946, 0.052947, type=FemMarker, attach=pharynx
+114, 0.149256, -0.018882, 0.050501, type=FemMarker, attach=pharynx
+115, 0.149425, -0.019930, 0.047829, type=FemMarker, attach=pharynx
+116, 0.149223, -0.020949, 0.045141, type=FemMarker, attach=pharynx
+117, 0.149155, -0.022421, 0.041390, type=FemMarker, attach=pharynx
+118, 0.148617, -0.023730, 0.039734, type=FemMarker, attach=pharynx
+119, 0.147625, -0.024780, 0.038277, type=FemMarker, attach=pharynx
+120, 0.146066, -0.025586, 0.036375, type=FemMarker, attach=pharynx
+121, 0.144370, -0.025687, 0.035443, type=FemMarker, attach=pharynx
+122, 0.142278, -0.025336, 0.035079, type=FemMarker, attach=pharynx
+123, 0.140658, -0.025396, 0.034548, type=FemNode, attach=thyroid
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72
+73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91
+92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107
+108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123
+

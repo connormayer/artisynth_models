@@ -1,0 +1,27 @@
+# Description of *SemispinalisCapitis_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.180335, -0.024486, 0.075212, type=FrameMarker, attach=C4
+1, 0.208566, -0.021275, 0.136537, type=FrameMarker, attach=cranium
+2, 0.187972, -0.024704, 0.058450, type=FrameMarker, attach=C5
+3, 0.208635, -0.017406, 0.136484, type=FrameMarker, attach=cranium
+4, 0.188152, -0.024751, 0.048255, type=FrameMarker, attach=C6
+5, 0.208669, -0.015495, 0.136457, type=FrameMarker, attach=cranium
+6, 0.211216, -0.025112, 0.047230, type=FrameMarker, attach=C7
+7, 0.201883, -0.012200, 0.132139, type=FrameMarker, attach=cranium
+8, 0.250496, -0.032694, -0.065145, type=FrameMarker, attach=base
+9, 0.234744, -0.023979, 0.028711, type=FrameMarker, attach=C7
+10, 0.226540, -0.021024, 0.053625, type=FrameMarker, attach=C6
+11, 0.224230, -0.019254, 0.063150, type=FrameMarker, attach=C5
+12, 0.220475, -0.018256, 0.078187, type=FrameMarker, attach=C4
+13, 0.216310, -0.015988, 0.089010, type=FrameMarker, attach=C3
+14, 0.213194, -0.016321, 0.097563, type=FrameMarker, attach=C2
+15, 0.206891, -0.013788, 0.121017, type=FrameMarker, attach=C1
+16, 0.201883, -0.012200, 0.132139, type=FrameMarker, attach=cranium
+
+connections
+0, 1
+2, 3
+4, 5
+6, 7
+8, 9, 10, 11, 12, 13, 14, 15, 16

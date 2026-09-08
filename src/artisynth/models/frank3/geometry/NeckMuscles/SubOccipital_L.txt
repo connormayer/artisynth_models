@@ -1,0 +1,18 @@
+# Description of *SubOccipital_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+1, 0.188138, 0.016121, 0.120389, type=FrameMarker, attach=C1
+2, 0.181908, 0.019154, 0.126086, type=FrameMarker, attach=cranium
+3, 0.197878, 0.002914, 0.118104, type=FrameMarker, attach=C1
+4, 0.203166, 0.011390, 0.132501, type=FrameMarker, attach=cranium
+5, 0.169341, 0.036706, 0.117039, type=FrameMarker, attach=C1
+6, 0.195496, 0.024779, 0.131472, type=FrameMarker, attach=cranium
+7, 0.202182, 0.002553, 0.097675, type=FrameMarker, attach=C2
+8, 0.169341, 0.036706, 0.117039, type=FrameMarker, attach=C1
+
+connections
+0, 1, 2
+3, 4
+5, 6
+7, 8

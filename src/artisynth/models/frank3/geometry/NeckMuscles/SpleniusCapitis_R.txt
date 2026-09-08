@@ -1,0 +1,24 @@
+# Description of *SpleniusCapitis_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.236009, -0.005462, 0.032026, type=FrameMarker, attach=C7
+1, 0.213738, -0.016376, 0.051765, type=FrameMarker, attach=C6
+2, 0.202932, -0.022469, 0.061747, type=FrameMarker, attach=C5
+3, 0.191076, -0.028204, 0.074818, type=FrameMarker, attach=C4
+4, 0.182511, -0.032246, 0.083566, type=FrameMarker, attach=C3
+5, 0.171874, -0.037207, 0.093413, type=FrameMarker, attach=C2
+6, 0.148988, -0.047334, 0.113802, type=FrameMarker, attach=C1
+7, 0.142919, -0.051238, 0.121913, type=FrameMarker, attach=cranium
+8, 0.239364, -0.006316, -0.036663, type=FrameMarker, attach=base
+9, 0.210298, -0.021252, 0.024232, type=FrameMarker, attach=C7
+10, 0.192329, -0.029108, 0.048876, type=FrameMarker, attach=C6
+11, 0.185076, -0.033004, 0.060625, type=FrameMarker, attach=C5
+12, 0.176804, -0.036659, 0.073211, type=FrameMarker, attach=C4
+13, 0.170787, -0.039226, 0.081691, type=FrameMarker, attach=C3
+14, 0.163113, -0.042374, 0.092545, type=FrameMarker, attach=C2
+15, 0.148962, -0.048801, 0.113822, type=FrameMarker, attach=C1
+16, 0.142919, -0.051238, 0.121913, type=FrameMarker, attach=cranium
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7
+8, 9, 10, 11, 12, 13, 14, 15, 16

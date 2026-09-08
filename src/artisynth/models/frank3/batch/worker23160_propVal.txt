@@ -1,0 +1,6 @@
+TaskNumber,models/FrankMechModel/MuscleExciters/TongueExciters/GGA:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/TRANS:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/STY:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/SL:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/IL:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/GGM:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/GGP:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/MH:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/HG:excitation,models/FrankMechModel/MuscleExciters/TongueExciters/VERT:excitation
+1,0,0,0,0.1,0,0,0,0,0,0.1
+5,0,0,0,0.1,0,0,0,0.1,0,0.1
+9,0,0,0,0.1,0,0,0.1,0,0,0.1
+12,0,0,0,0.1,0,0,0.1,0.1,0,0
+15,0,0,0,0.1,0,0,0.1,0.1,0.1,0.1

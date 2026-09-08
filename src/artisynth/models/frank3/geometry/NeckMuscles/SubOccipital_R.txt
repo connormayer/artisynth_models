@@ -1,0 +1,18 @@
+# Description of *SubOccipital_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.202054, -0.004458, 0.097770, type=FrameMarker, attach=C2
+1, 0.187548, -0.016879, 0.120843, type=FrameMarker, attach=C1
+2, 0.181216, -0.019530, 0.126621, type=FrameMarker, attach=cranium
+3, 0.197753, -0.004097, 0.118200, type=FrameMarker, attach=C1
+4, 0.202741, -0.012356, 0.132830, type=FrameMarker, attach=cranium
+5, 0.168026, -0.036863, 0.118051, type=FrameMarker, attach=C1
+6, 0.194597, -0.025486, 0.132168, type=FrameMarker, attach=cranium
+7, 0.202054, -0.004458, 0.097770, type=FrameMarker, attach=C2
+8, 0.168026, -0.036863, 0.118051, type=FrameMarker, attach=C1
+
+connections
+0, 1, 2
+3, 4
+5, 6
+7, 8

@@ -1,0 +1,9 @@
+# Description of *ThyrohyoidPosterosuperiorMembrane1_L* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.139971, -0.024400, 0.046531, type=FemNode, attach=thyroid
+1, 0.127649, -0.021800, 0.060893, type=FemNode, attach=hyoid
+
+connections
+0, 1
+

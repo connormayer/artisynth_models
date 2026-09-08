@@ -1,0 +1,17 @@
+# Description of *LevatorScapulae_R* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.168026, -0.036863, 0.118051, type=FrameMarker, attach=C1
+1, 0.230580, -0.088706, -0.008169, type=FrameMarker, attach=base
+2, 0.176183, -0.020773, 0.104273, type=FrameMarker, attach=C2
+3, 0.230580, -0.088706, -0.008169, type=FrameMarker, attach=base
+4, 0.166905, -0.026998, 0.086772, type=FrameMarker, attach=C3
+5, 0.230580, -0.088706, -0.008169, type=FrameMarker, attach=base
+6, 0.169286, -0.027153, 0.071382, type=FrameMarker, attach=C4
+7, 0.230580, -0.088706, -0.008169, type=FrameMarker, attach=base
+
+connections
+0, 1
+2, 3
+4, 5
+6, 7

@@ -1,0 +1,31 @@
+# Description of *LongusCapitis_L* muscle bundle. Created on 2018.01.23_09:29:57 PST. 
+
+points
+0, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+1, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+2, 0.137379, 0.019303, 0.114825, type=FrameMarker, attach=C1
+3, 0.138905, 0.019486, 0.130098, type=FrameMarker, attach=cranium
+4, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+5, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+6, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+7, 0.137379, 0.019303, 0.114825, type=FrameMarker, attach=C1
+8, 0.138905, 0.019486, 0.130098, type=FrameMarker, attach=cranium
+9, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+10, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+11, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+12, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+13, 0.137379, 0.019303, 0.114825, type=FrameMarker, attach=C1
+14, 0.138905, 0.019486, 0.130098, type=FrameMarker, attach=cranium
+15, 0.152922, 0.022511, 0.027707, type=FrameMarker, attach=C6
+16, 0.147357, 0.021022, 0.047615, type=FrameMarker, attach=C5
+17, 0.142699, 0.020346, 0.063452, type=FrameMarker, attach=C4
+18, 0.138741, 0.019142, 0.081225, type=FrameMarker, attach=C3
+19, 0.135409, 0.018569, 0.101211, type=FrameMarker, attach=C2
+20, 0.137379, 0.019303, 0.114825, type=FrameMarker, attach=C1
+21, 0.138905, 0.019486, 0.130098, type=FrameMarker, attach=cranium
+
+connections
+0, 1, 2, 3
+4, 5, 6, 7, 8
+9, 10, 11, 12, 13, 14
+15, 16, 17, 18, 19, 20, 21

@@ -1,0 +1,21 @@
+# Description of *ObicularisOrisMiddle_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.041042, 0.000000, 0.102130, type=FemMarker, attach=face
+1, 0.043627, 0.006303, 0.102817, type=FemMarker, attach=face
+2, 0.046178, 0.012850, 0.103369, type=FemMarker, attach=face
+3, 0.050454, 0.016730, 0.103572, type=FemMarker, attach=face
+4, 0.056461, 0.018003, 0.104085, type=FemMarker, attach=face
+5, 0.061328, 0.020115, 0.103509, type=FemMarker, attach=face
+6, 0.065589, 0.021149, 0.102072, type=FemMarker, attach=face
+7, 0.068505, 0.020575, 0.099281, type=FemMarker, attach=face
+8, 0.064459, 0.017794, 0.094817, type=FemMarker, attach=face
+9, 0.060920, 0.016588, 0.091976, type=FemMarker, attach=face
+10, 0.055442, 0.012430, 0.088643, type=FemMarker, attach=face
+11, 0.052140, 0.009090, 0.087442, type=FemMarker, attach=face
+12, 0.049737, 0.004804, 0.086545, type=FemMarker, attach=face
+13, 0.046641, 0.000000, 0.086144, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+

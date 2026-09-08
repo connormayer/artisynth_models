@@ -1,0 +1,93 @@
+#---------- Tue Aug 18 13:52:09 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+3,false,0.005,1
+6,true,0.005,1
+9,false,0.005,1
+11,false,0.005,1
+14,false,0.005,1
+#---------- Tue Aug 18 16:15:22 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+#---------- Tue Aug 18 16:35:31 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+#---------- Tue Aug 18 20:25:15 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+3,false,0.005,1
+4,false,0.005,1
+8,false,0.005,1
+10,true,0.005,1
+15,false,0.005,1
+#---------- Wed Aug 19 10:26:44 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+3,false,0.005,1
+#---------- Wed Aug 19 10:59:16 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+3,false,0.005,1
+4,false,0.005,1
+#---------- Wed Aug 19 11:36:26 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.005,1
+3,false,0.005,1
+4,true,0.005,1
+8,true,0.005,1
+13,false,0.005,1
+15,false,0.005,1
+#---------- Wed Aug 19 13:18:57 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.003,1
+3,false,0.003,1
+5,false,0.003,1
+8,false,0.003,1
+11,false,0.003,1
+14,false,0.003,1
+#---------- Wed Aug 19 19:12:05 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.003,1
+#---------- Wed Aug 19 23:38:36 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,true,0.003,1
+5,true,0.003,1
+8,false,0.003,1
+9,false,0.003,1
+12,false,0.003,1
+15,false,0.003,1
+18,true,0.003,1
+20,false,0.003,1
+24,false,0.003,1
+26,true,0.003,1
+30,true,0.003,1
+34,true,0.003,1
+37,true,0.003,1
+40,false,0.003,1
+42,true,0.003,1
+45,true,0.003,1
+#---------- Thu Aug 20 15:59:04 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,true,0.003,1
+5,true,0.003,1
+#---------- Wed Aug 26 16:57:21 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+4,false,0.003,1
+5,false,0.003,1
+8,true,0.003,1
+11,false,0.003,1
+13,true,0.003,1
+16,true,0.003,1
+19,true,0.003,1
+22,true,0.003,1
+25,true,0.003,1
+28,true,0.003,1
+31,true,0.003,1
+#---------- Mon Aug 31 14:14:07 PDT 2026 ----------
+#Format: Task Counter Number,Did Simulation Succeed,Last Step Size Used,Number of Simulations Attempted
+2,false,0.003,1
+3,true,0.003,1
+6,false,0.003,1
+7,false,0.003,1
+10,true,0.003,1
+13,true,0.003,1

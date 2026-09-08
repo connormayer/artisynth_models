@@ -1,0 +1,9 @@
+# Description of *PterygomandibularRaphe_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.115580, 0.020462, 0.116780, type=Particle, attach=maxilla
+1, 0.109570, 0.025197, 0.098900, type=Particle, attach=jaw
+
+connections
+0, 1
+

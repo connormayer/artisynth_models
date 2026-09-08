@@ -1,0 +1,41 @@
+The most recent and complete reference for this model is Anderson et al 2015; please cite this model using this paper.
+* P. Anderson, N. M. Harandi, S. Moisik, I. Stavness, S. Fels, A comprehensive 3d biomechanically-driven vocal tract model including inverse dynamics for speech research, in: Interspeech 2015, Dresden, Germany, 2015.
+
+
+References concerning the origins and modifications of components within Frank:
+
+--- Jaw,hyoid,maxilla ---
+* I. Stavness, A. G. Hannam, J. E. Lloyd, S. Fels, An integrated, dynamic jaw and laryngeal model constructed from ct data, Proceedings of ISBMS 06 in Springer LNCS 4072 (2006) 169–177.
+
+* A. Hannam, I. Stavness, J. Lloyd, S. Fels, A dynamic model of jaw and hyoid biomechanics during chewing, Journal of Biomechanics 41 (5) (2008) 1069-1076.
+
+--- Tongue ---
+* J.-M. Gerard, R. Wilhelms-Tricarico, P. Perrier, Y. Payan, A 3d dynamical biomechanical tongue model to study speech motor control, Recent Research Developments in Biomechanics 1 (2003) 49–64.
+
+* J.-M. Gerard, P. Perrier, Y. Payan, 3D biomechanical tongue modeling to study speech production, in: J. H. . M. Tabain (Ed.), Speech Production: Models, Phonetic Processes, and Techniques, Chapter 6, ISBN 1841694371., Psychology Press, New York, 2006, pp. 85–102.
+
+* S. Buchaillard, P. Perrier, Y. Payan, A biomechanical model of cardinal vowel production: Muscle activations and the impact of gravity on tongue positioning, The Journal of the Acoustical Society of America 126 (2009) 2033–2051.
+
+* I. Stavness, J. E. Lloyd, Y. Payan, S. Fels, Coupled hard-soft tissue simulation with contact and constraints applied to jaw-tongue-hyoid dynamics, International Journal For Numerical Methods In Biomedical Engineering 27 (2011) 367–390.
+
+--- Soft Palate ---
+* H. Chen, S. Fels, T. Pang, L. Tsou, F. R. de Almeida, A. A. Lowe, Three-dimensional reconstruction of soft palate modeling from subject-specific magnetic resonance imaging data, Sleep And Breathing 16 (2012) 1113–1119.
+
+* B. Gick, P. Anderson, H. Chen, C. Chiu, H. B. Kwon, I. Stavness, L. Tsou, S. Fels, Speech function of the oropharyngeal isthmus: a modelling study, Computer Methods in Biomechanics and Biomedical Engineering: Imaging & Visualization 2 (2014) 217–222
+
+--- Pharynx ---
+* P. Anderson, N. M. Harandi, S. Moisik, I. Stavness, S. Fels, A comprehensive 3d biomechanically-driven vocal tract model including inverse dynamics for speech research, in: Interspeech 2015, Dresden, Germany, 2015.
+
+--- Larynx ---
+* S. Moisik, B. Gick, The quantal larynx revisited, The Journal of the Acoustical Society of America 133 (2013) 3522–3522.
+
+--- Face ---
+* M. A. Nazari, P. Perrier, M. Chabanas, Y. Payan, Simulation of dynamic orofacial movements using a constitutive law varying with muscle activation, Computer Methods in Biomechanics and Biomedical Engineering 13 (2010) 469–482.
+
+* M. Bucki, M. A. Nazari, Y. Payan, Finite element speaker-specific face model generation for the study of speech production, Computer Methods in Biomechanics and Biomedical Engineering 13 (4) (2010) 459–467.
+
+* C. Flynn, I. Stavness, J. Lloyd, S. Fels, A finite element model of the face including an orthotropic skin model under in vivo tension, Computer Methods in Biomechanics and Biomedical Engineering 0 (0) (2013) 1–12
+
+* I. Stavness, M. A. Nazari, P. Perrier, D. Demolin, Y. Payan, A biomechanical modeling study of the effects of the orbicularis oris muscle and jaw posture on lip shape, Journal Of Speech Language And Hearing Research 56 (2013) 878–890.
+
+* I. Stavness, M. Nazari, C. Flynn, P. Perrier, Y. Payan, J. Lloyd, S. Fels, Coupled biomechanical modeling of the face, jaw, skull, tongue, and hyoid bone, in: N. Magnenat-Thalmann, O. Ratib, H. F. Choi (Eds.), 3D Multiscale Physiological Human, Springer London, 2014, pp. 253–274.

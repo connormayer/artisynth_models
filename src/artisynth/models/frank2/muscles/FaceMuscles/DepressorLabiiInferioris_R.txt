@@ -1,0 +1,19 @@
+# Description of *DepressorLabiiInferioris_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.064542, 0.006671, 0.065612, type=FemMarker, attach=face
+1, 0.064489, 0.006617, 0.068595, type=FemMarker, attach=face
+2, 0.063963, 0.005632, 0.071052, type=FemMarker, attach=face
+3, 0.063636, 0.005297, 0.073791, type=FemMarker, attach=face
+4, 0.059273, 0.003129, 0.075953, type=FemMarker, attach=face
+5, 0.058130, 0.002055, 0.076914, type=FemMarker, attach=face
+6, 0.078974, 0.022281, 0.071086, type=FemMarker, attach=face
+7, 0.074937, 0.022092, 0.077635, type=FemMarker, attach=face
+8, 0.070921, 0.021839, 0.082199, type=FemMarker, attach=face
+9, 0.069322, 0.020849, 0.085028, type=FemMarker, attach=face
+10, 0.066210, 0.018537, 0.086570, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5
+6, 7, 8, 9, 10
+

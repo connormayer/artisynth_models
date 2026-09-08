@@ -1,0 +1,24 @@
+# Description of *LevatorLabiiSuperiorisAlaequeNasi_R* muscle bundle. Created on 2016.07.27_12:50:23 PDT. 
+
+points
+0, 0.063981, 0.018051, 0.147691, type=FemMarker, attach=face
+1, 0.063159, 0.017789, 0.141080, type=FemMarker, attach=face
+2, 0.062116, 0.017758, 0.136190, type=FemMarker, attach=face
+3, 0.060577, 0.018333, 0.132203, type=FemMarker, attach=face
+4, 0.059378, 0.019041, 0.127681, type=FemMarker, attach=face
+5, 0.057794, 0.019450, 0.123932, type=FemMarker, attach=face
+6, 0.056727, 0.019717, 0.119879, type=FemMarker, attach=face
+7, 0.056313, 0.019582, 0.116377, type=FemMarker, attach=face
+8, 0.053929, 0.019597, 0.113091, type=FemMarker, attach=face
+9, 0.063981, 0.018051, 0.147691, type=FemMarker, attach=face
+10, 0.062724, 0.016859, 0.141351, type=FemMarker, attach=face
+11, 0.062259, 0.016170, 0.135316, type=FemMarker, attach=face
+12, 0.060523, 0.015948, 0.128295, type=FemMarker, attach=face
+13, 0.058981, 0.015154, 0.124372, type=FemMarker, attach=face
+14, 0.058436, 0.013779, 0.122560, type=FemMarker, attach=face
+15, 0.058161, 0.011995, 0.121976, type=FemMarker, attach=face
+
+connections
+0, 1, 2, 3, 4, 5, 6, 7, 8
+9, 10, 11, 12, 13, 14, 15
+

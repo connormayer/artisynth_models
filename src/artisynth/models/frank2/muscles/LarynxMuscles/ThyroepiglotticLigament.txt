@@ -1,0 +1,9 @@
+# Description of *ThyroepiglotticLigament* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.125393, 0.000000, 0.043349, type=FemNode, attach=epiglottis
+1, 0.118326, 0.000000, 0.033495, type=FemNode, attach=thyroid
+
+connections
+0, 1
+

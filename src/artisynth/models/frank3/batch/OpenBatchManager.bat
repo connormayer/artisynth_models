@@ -1,0 +1,1 @@
+java -cp "C:\Users\yuron\git\artisynth_core\classes;C:\Users\yuron\git\artisynth_core\lib\*;C:\Users\yuron\git\artisynth_models\classes" artisynth.tools.batchsim.manager.BatchManager -f C:\Users\yuron\git\artisynth_models\src\artisynth\models\frank3\batch\props_smoke.psl

@@ -1,0 +1,9 @@
+# Description of *AnteriorDigastric_R* muscle bundle. Created on 2015.05.28_16:51:15 PDT. 
+
+points
+0, 0.076640, 0.008374, 0.058764, type=Particle, attach=jaw
+1, 0.118123, 0.010547, 0.062607, type=Particle, attach=hyoid
+
+connections
+0, 1
+
