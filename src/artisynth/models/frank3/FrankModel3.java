@@ -41,6 +41,10 @@ import artisynth.core.probes.NumericInputProbe;
 import artisynth.core.util.ArtisynthPath;
 import artisynth.models.frank2.FrankModel2;
 import artisynth.models.frank2.GenericModel;
+//20260831Cyd
+//0912 Shitong
+//import artisynth.models.frank2.FrankAttachments;
+//-----20260831Cyd
 import artisynth.models.jawTongue.AirwaySkin;
 import artisynth.models.jawTongue.StaticJawHyoidTongue;
 import artisynth.models.modelOrderReduction.PrintData;
@@ -104,10 +108,6 @@ public class FrankModel3 extends FrankModel2 {
    public ControlPanel alignmentPanel;
    public boolean saveGeo = false;
 
-   /** When true, skip GUI panels and textured rendering (set via -Dartisynth.batchsim=true). */
-   protected boolean batchMode =
-      Boolean.getBoolean ("artisynth.batchsim");
-
    String workingPath = ArtisynthPath.getSrcRelativePath (this.getClass(), "");
    String geometryPath = workingPath + "/geometry";
    String dataPath = workingPath + "/data";
@@ -116,20 +116,17 @@ public class FrankModel3 extends FrankModel2 {
    RigidBody jaw;
    RigidBody maxilla;
    RigidBody cranium;
+   //20260831Cyd
+   //0912 Shitong
+   //RigidBody hyoid;
+   //---20260831Cyd
    RenderableComponentList<FemMuscleModel> fems;
    AirwaySkin airwaySkin;
 
 
-   @Override
-   protected void buildControlPanels() {
-      if (batchMode) {
-         return;
-      }
-      super.buildControlPanels();
-   }
-
    public void build (String [] args) throws IOException {
       super.build (args);
+      
       rbs = (RenderableComponentList<RigidBody>)mechModel.get ("RigidBodies");
       externalMuscles = (RenderableComponentList<MuscleBundle>)mechModel.get ("ExternalMuscles");
       
@@ -137,13 +134,11 @@ public class FrankModel3 extends FrankModel2 {
       neckRbs.get ("C8").setDynamic (false);
 
       // control panel
-      if (!batchMode) {
-         alignmentPanel = new ControlPanel("Alignment");
-         alignmentPanel.addWidget (this, "saveGeometry");
-         alignmentPanel.addWidget (this, "saveMuscleExcitation");
-         alignmentPanel.addWidget (this, "loadMuscleExictation");
-         //this.addControlPanel(alignmentPanel);
-      }
+      alignmentPanel = new ControlPanel("Alignment");
+      alignmentPanel.addWidget (this, "saveGeometry");
+      alignmentPanel.addWidget (this, "saveMuscleExcitation");
+      alignmentPanel.addWidget (this, "loadMuscleExictation");
+      //this.addControlPanel(alignmentPanel);
 
       // inverse simulation
       //createTargetList();
@@ -155,6 +150,10 @@ public class FrankModel3 extends FrankModel2 {
       jaw = rbs.get ("jaw");
       maxilla = rbs.get ("maxilla");
       cranium = rbs.get ("cranium");
+      //20260831Cyd
+      //0912 Shitong
+      //hyoid = rbs.get ("hyoid"); 
+      //---20260831Cyd
       fems = (RenderableComponentList<FemMuscleModel>)mechModel.get("DeformableBodies");
 
       attachPharynxNeck ();
@@ -162,11 +161,22 @@ public class FrankModel3 extends FrankModel2 {
       setNodeDym();
       setFrankSkull();
       //defineJawContraints();
+
+      //20260831Cyd - hyoid 
+      //0912 Shitong
+      //FrankAttachments.defineHyoidConstraints(hyoid, maxilla, mechModel);
+
+      
+      //mechModel.getCollisionManager().setCompliance(1e-5);
+      //20260901 - softer contact
+      mechModel.getCollisionManager().setCompliance(1e-4);
+      //----20260901
+      mechModel.getCollisionManager().setDamping(100.0); 
+      //-----20260831Cyd
+
       setCollisionBehavior();
       face.getRenderProps ().setVisible (true);
-      if (!batchMode) {
-         renderLipTexture();
-      }
+      renderLipTexture();
       renderNonDynNodes();
       //recursivelyPrintComponents (this);
    }

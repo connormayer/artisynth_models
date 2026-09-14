@@ -15,8 +15,14 @@ import maspack.properties.Property;
 import artisynth.core.driver.Main;
 import artisynth.core.femmodels.FemMuscleModel;
 import artisynth.core.femmodels.FemNode3d;
+import artisynth.core.mechmodels.CollisionBehavior;
+//20260913Cyd
+import artisynth.core.femmodels.FemMarker;
+//-----20260913Cyd
 import artisynth.core.mechmodels.MuscleExciter;
 import artisynth.core.modelbase.ModelComponent;
+import artisynth.core.modelbase.Monitor;
+import artisynth.core.modelbase.MonitorBase;
 import artisynth.core.probes.NumericInputProbe;
 import artisynth.core.probes.Probe;
 import artisynth.models.frank2.FrankActivations;
@@ -40,7 +46,7 @@ import artisynth.tools.batchsim.conditions.TimeChecker.TimeCondition;
  *
  * The record* flags below choose which FEMs are saved and which must settle.
  *
- * Adapted from FrankModel2BatchWorker by Infinity Fu, which is adapted from JawHyoidFemMuscleTongueBatchWorker by Conner Mayer.
+ * Adapted from FrankModel2BatchWorker by Infinity Fu, which is adapted from JawHyoidFemMuscleTongueBatchWorker.
  * Must live in src/artisynth/models/frank3/ to compile.
  */
 public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
@@ -48,34 +54,68 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
    protected String myOutputDirName = "output/";
    protected FrankModel3 root;
    protected ArrayList<MuscleExciter> exciters;
+   //20260830Cyd
+   protected MuscleExciter jawCloseExciter;
+   protected double myJawCloseExcitation = 0.004;
+   //-----20260830Cyd
+   //20260913Cyd
+   protected double myPalateExcitation = 0.004; 
+   //-----20260913Cyd
+   //20260901Shitong - delay tongue-maxilla contact until jawSettleTime
+   protected double myJawSettleTime;
+   protected boolean myDelayTongueMaxillaContact;
+   protected boolean myTongueMaxillaContactEnabled;
+   protected Monitor myContactDelayMonitor;
+   //--20260901 Shitong
+   //20260913Cyd
+   protected Monitor myVppContactMonitor;              
+   protected PrintWriter myVppContactFileWriter;
+   protected double myNextVppCheckTime = 0.0;
+   private static final double VPP_CHECK_INTERVAL = 0.02;
+   //-----20260913Cyd
+   
+   protected PrintWriter myMarkerFileWriter; //20260913Cyd - per-task marker (row0_1 etc) output
+   
    protected PrintWriter myWriter;
    protected PrintWriter myPositionFileWriter;
    protected PrintWriter myFailedExcitationFileWriter;
 
    /** How long each exciter is held, in seconds. Make this match the batch stop time. Newly added.*/
-   protected double myProbeDuration = 1.0;
-
+   //20260827Cyd
+   //protected double myProbeDuration = 1.0;
+   protected double myProbeDuration = 1.2 ; 
+   //----20260827Cyd
    // Time window the FEMs must settle in. Set in setUpStopConditionMonitor().
    protected double mySettleTime;
-   protected double myMaxTime;
+   //protected double myMaxTime;//20260904 Cyd
 
    // Turn a FEM off (false) to skip saving its nodes.
    protected boolean recordTongue     = true;
-   protected boolean recordFace       = true;
-   protected boolean recordSoftPalate = true;
-   protected boolean recordPharynx    = true;
-   protected boolean recordLarynx     = true;
-
+   //20260817Cyd----turn off the checkers
+   protected boolean recordFace       = false;
+   protected boolean recordSoftPalate = false;
+   protected boolean recordPharynx    = false;
+   protected boolean recordLarynx     = false;
+   //--------------20260817Cyd
    public FrankModel3BatchWorker(String[] args)
          throws IllegalStateException, IOException {
       super(args);
 
       root = (FrankModel3) Main.getMain().getRootModel();
+      //20260819Cyd
+      root.setMaxStepSize(0.003); 
+      //----20260819Cyd
       // frank3 inherits frank2 exciters in several groups. getAllExciters() puts them in one list.
       exciters = root.getAllExciters();
-
+      //20260830Cyd
+      jawCloseExciter = FrankActivations.makeJawCloseExciter(exciters);
+      root.mechModel.addMuscleExciter(jawCloseExciter);
+      //---20260830Cyd
       myWriter = initWriter(myOutputDirName, "excitations.txt");
+
       myPositionFileWriter = initWriter(myOutputDirName, "position.txt");
+      myVppContactFileWriter = initWriter(myOutputDirName, "vpp_contact.txt");//20260913Cyd
+      myMarkerFileWriter = initWriter(myOutputDirName, "markers.txt"); //20260913Cyd
       myFailedExcitationFileWriter =
          initWriter(myOutputDirName, "failedexcitations.txt");
 
@@ -96,6 +136,12 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
       root = (FrankModel3) Main.getMain().getRootModel();
       root.removeAllInputProbes();
       addAllExciterProbes();
+      setupDelayedTongueMaxillaContact(); //20260901 Shitong
+      //20260913Cyd
+      myNextVppCheckTime = 0.0;
+      myVppContactMonitor = new VppContactMonitor();
+      root.addMonitor(myVppContactMonitor);
+      //----20260913Cyd
       super.preSim();
       System.out.println("preSim finished for task " + myTaskCounter);
    }
@@ -106,9 +152,13 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
     * cubic step, then hold. Gentler than a hard step from t=0, which stresses
     * the FEM and can invert elements.
     */
+   /* 20260830Cyd
    protected void addAllExciterProbes() {
       double d = myProbeDuration;
-      double[] time = {0.0, 0.1 * d, 0.8 * d, d};
+      //20260827Cyd
+      //double[] time = {0.0, 0.1 * d, 0.8 * d, d};
+      double[] time = {0.0, 0.02 * d, 0.85 * d, d};
+      //----20260827Cyd
       for (String[] compPropVal : myCurrentTask) {
          String propPath = compPropVal[0];
          Property prop = myRootModel.getProperty(propPath);
@@ -122,8 +172,103 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
          }
       }
    }
+      */
+   /*20260830Cyd
+   protected void addAllExciterProbes() {
+      double d = myProbeDuration;
+      double settleTime = 0.02 * d;   // jaw closers ramp to target during [0, settleTime]
+      double peakTime    = 0.85 * d;   // tongue muscles ramp to target during [settleTime, peakTime]
+      double maxTime     = d;
+
+      // jaw closers (AT/MT/PT/DM/SM/MP combined): 0 -> target over [0, settleTime], then hold
+      NumericInputProbe jp = FrankActivations.createMuscleProbe(
+         jawCloseExciter, jawCloseExciter.getName(),
+         new double[] {0.0, settleTime, maxTime},
+         new double[] {0.0, myJawCloseExcitation, myJawCloseExcitation});
+      jp.setInterpolationOrder(Order.CubicStep);
+      root.addInputProbe(jp);
+
+      // tongue muscles for this task: hold 0 until settleTime, ramp to v by peakTime, then hold
+      double[] tongueTime = {0.0, settleTime, peakTime, maxTime};
+      for (String[] compPropVal : myCurrentTask) {
+         String propPath = compPropVal[0];
+         Property prop = myRootModel.getProperty(propPath);
+         if (prop.getHost() instanceof MuscleExciter) {
+            MuscleExciter exc = (MuscleExciter) prop.getHost();
+            double v = exc.getExcitation();
+            NumericInputProbe p = FrankActivations.createMuscleProbe(
+               exc, exc.getName(), tongueTime, new double[] {0.0, 0.0, v, v});
+            p.setInterpolationOrder(Order.CubicStep);
+            root.addInputProbe(p);
+         }
+      }
+   }
+
+   -----20260830Cyd*/
+   //20260831 Cyd
+   
+   protected void addAllExciterProbes() {
+      double d = myProbeDuration;
+      double jawRampTime   = 0.02 * d;   
+      //double jawSettleTime = 0.08 * d;
+
+      double jawSettleTime = 0.15 * d;//20260901Shitong
+      myJawSettleTime = jawSettleTime;
+
+      double peakTime      = 0.85 * d;   
+      //double maxTime        = d;
+      double maxTime       = d; //20260904 Shitong
+
+      // jaw closers (AT/MT/PT/DM/SM/MP combined): 0 -> target over [0, jawRampTime], then hold
+      NumericInputProbe jp = FrankActivations.createMuscleProbe(
+         jawCloseExciter, jawCloseExciter.getName(),
+         new double[] {0.0, jawRampTime, maxTime},
+         new double[] {0.0, myJawCloseExcitation, myJawCloseExcitation});
+      jp.setInterpolationOrder(Order.CubicStep);
+      root.addInputProbe(jp);
+      //20260913Cyd
+      // soft palate elevators (LVP, TVP): 跟jaw同樣的時間表,
+      // 在tongue開始動之前就先抬升到定位
+      MuscleExciter lvpExciter = FrankActivations.findExciter(exciters, "LVP");
+      MuscleExciter tvpExciter = FrankActivations.findExciter(exciters, "TVP");
+      if (lvpExciter != null) {
+         NumericInputProbe lvpProbe = FrankActivations.createMuscleProbe(
+            lvpExciter, lvpExciter.getName(),
+            new double[] {0.0, jawRampTime, maxTime},
+            new double[] {0.0, myPalateExcitation, myPalateExcitation});
+         lvpProbe.setInterpolationOrder(Order.CubicStep);
+         root.addInputProbe(lvpProbe);
+      }
+      if (tvpExciter != null) {
+         NumericInputProbe tvpProbe = FrankActivations.createMuscleProbe(
+            tvpExciter, tvpExciter.getName(),
+            new double[] {0.0, jawRampTime, maxTime},
+            new double[] {0.0, myPalateExcitation, myPalateExcitation});
+         tvpProbe.setInterpolationOrder(Order.CubicStep);
+         root.addInputProbe(tvpProbe);
+      }
+      //---20260913Cyd
+      // tongue muscles for this task: hold 0 until jawSettleTime（不是 jawRampTime），
+      // ramp to v by peakTime, then hold
+      double[] tongueTime = {0.0, jawSettleTime, peakTime, maxTime};
+      for (String[] compPropVal : myCurrentTask) {
+         String propPath = compPropVal[0];
+         Property prop = myRootModel.getProperty(propPath);
+         if (prop.getHost() instanceof MuscleExciter) {
+            MuscleExciter exc = (MuscleExciter) prop.getHost();
+            double v = exc.getExcitation();
+            NumericInputProbe p = FrankActivations.createMuscleProbe(
+               exc, exc.getName(), tongueTime, new double[] {0.0, 0.0, v, v});
+            p.setInterpolationOrder(Order.CubicStep);
+            root.addInputProbe(p);
+         }
+      }
+   }
+
+   //-----20260831Cyd
 
    /** Remove this task's probes so the next task starts clean. */
+   /* 20260830Cyd
    protected void removeAllExciterProbes() {
       for (MuscleExciter exc : exciters) {
          // the probe has the same name as the exciter
@@ -133,6 +278,22 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
          }
       }
    }
+      */
+   //20260830Cyd
+   protected void removeAllExciterProbes() {
+      for (MuscleExciter exc : exciters) {
+         // the probe has the same name as the exciter
+         Probe p = root.getInputProbes().get(exc.getName());
+         if (p != null) {
+            root.removeInputProbe(p);
+         }
+      }
+      Probe jp = root.getInputProbes().get(jawCloseExciter.getName());
+      if (jp != null) {
+         root.removeInputProbe(jp);
+      }
+   }
+   //-----20260830Cyd
 
    /** Save the node positions of every FEM that is turned on. */
    protected void recordPosition() {
@@ -141,7 +302,11 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
       recordFemPositions(recordSoftPalate, root.softPalate);
       recordFemPositions(recordPharynx,    root.pharynx);
       recordFemPositions(recordLarynx,     root.larynx);
+      
+      recordMarkerPositions(root.tongue); //20260913Cyd - also log the 42 named markers
       myPositionFileWriter.flush();
+      
+      myMarkerFileWriter.flush(); // 20260913Cyd
    }
 
    /**
@@ -171,6 +336,29 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
       }
    }
 
+   ///20260913Cyd 
+   protected void recordMarkerPositions(FemMuscleModel fem) {
+   if (fem == null) {
+      System.err.println("Error: FEM is null in recordMarkerPositions()");
+      return;
+   }
+   for (FemMarker mkr : fem.markers()) {
+      String name = mkr.getName();
+      if (name == null || !name.startsWith("row")) {
+         continue;   // 跳過肌肉fiber用的marker,只留下row0_1~row5_7這42個
+      }
+      Point3d pos = mkr.getPosition();
+      StringBuilder builder = new StringBuilder();
+      builder.append(myTaskCounter).append(",");
+      builder.append(fem.getName()).append(",");
+      builder.append(mkr.getName()).append(",");
+      builder.append(pos.x).append(",");
+      builder.append(pos.y).append(",");
+      builder.append(pos.z);
+      myMarkerFileWriter.println(builder.toString());
+   }
+   }
+   //-----20260913Cyd
    @Override
    protected void recordSimResults() {
       if (!myCurrentTaskSuccessful) {
@@ -185,7 +373,7 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
          myFailedExcitationFileWriter.flush();
          return;
       }
-      recordPosition();  // skipped to test whether skipping the node dump improves batch stability //now do not skip :)
+      recordPosition();
       StringBuilder sb = new StringBuilder();
       sb.append(myTaskCounter);
       for (String[] propVal : myCurrentTask) {
@@ -198,8 +386,85 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
    @Override
    protected void postSim() {
       removeAllExciterProbes();
+      //20260901Cyd
+      removeContactDelayMonitor();
+      //----20260901Cyd
+      //20260913Cyd
+      if (myVppContactMonitor != null) {
+         root.removeMonitor(myVppContactMonitor);
+         myVppContactMonitor = null;
+      }
+      //----20260913Cyd
    }
 
+   //20260901Cyd
+   /**
+    * If tongue-maxilla contact is supposed to be on (Activated), keep it off
+    * until jawSettleTime so the jaw can close first. Deactivated stays off.
+    */
+   protected void setupDelayedTongueMaxillaContact() {
+      removeContactDelayMonitor();
+      myDelayTongueMaxillaContact = false;
+      if (root instanceof FrankModel3Position) {
+         myDelayTongueMaxillaContact =
+            ((FrankModel3Position) root).collideTongueMaxilla;
+      }
+      else {
+         CollisionBehavior b =
+            root.mechModel.getCollisionBehavior(root.tongue, root.maxilla);
+         myDelayTongueMaxillaContact = (b != null && b.isEnabled());
+      }
+      myTongueMaxillaContactEnabled = false;
+      if (myDelayTongueMaxillaContact) {
+         root.mechModel.setCollisionBehavior(root.tongue, root.maxilla, false);
+         myContactDelayMonitor = new TongueMaxillaContactDelayMonitor();
+         root.addMonitor(myContactDelayMonitor);
+      }
+   }
+
+   protected void removeContactDelayMonitor() {
+      if (myContactDelayMonitor != null) {
+         root.removeMonitor(myContactDelayMonitor);
+         myContactDelayMonitor = null;
+      }
+   }
+
+   protected class TongueMaxillaContactDelayMonitor extends MonitorBase {
+      public void apply(double t0, double t1) {
+         if (!myTongueMaxillaContactEnabled && t1 >= myJawSettleTime) {
+            root.mechModel.setCollisionBehavior(
+               root.tongue, root.maxilla, true, 0.0);
+            myTongueMaxillaContactEnabled = true;
+         }
+      }
+   }
+   //----20260901Cyd
+   //20260913Cyd
+   protected class VppContactMonitor extends MonitorBase {
+      public void apply(double t0, double t1) {
+         if (t1 < myNextVppCheckTime) {
+            return;
+         }
+         myNextVppCheckTime = t1 + VPP_CHECK_INTERVAL;
+
+         double minDist = Double.MAX_VALUE;
+         Point3d pa = new Point3d();
+         Point3d pb = new Point3d();
+         for (FemNode3d na : root.softPalate.getNodes()) {
+            na.getPosition(pa);
+            for (FemNode3d nb : root.pharynx.getNodes()) {
+               nb.getPosition(pb);
+               double d = pa.distance(pb);
+               if (d < minDist) minDist = d;
+            }
+         }
+         boolean closed = minDist <= 0.001;
+         myVppContactFileWriter.println(
+            myTaskCounter + "," + t1 + "," + minDist + "," + closed);
+         myVppContactFileWriter.flush();
+      }
+   }
+   //----20260913Cyd
    /**
     * Sets the rule for success: every FEM that is on must stop moving (settle)
     * within the time window ending at myMaxTime. If it does not, the task fails.
@@ -208,24 +473,30 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
    protected void setUpStopConditionMonitor() {
       root = (FrankModel3) Main.getMain().getRootModel();
       mySettleTime = 0.2;
-      myMaxTime = myProbeDuration - myRootModel.getMaxStepSize(); // stop a bit before the end
+      // myMaxTime = myProbeDuration - myRootModel.getMaxStepSize(); // stop a bit before the end
+      myMaxTime = 1.0; //20260913 Shitong
       super.setUpStopConditionMonitor();
-      // Nest equilibrium under the time gate so the cheap time check runs
-      // first. ConditionCheckerBase evaluates outer checkCondition before the
-      // nested checker; with the old order (equilibrium outer), every step
-      // walked all FEM node velocities even outside the settle window.
-      List<ModelComponent> comps = new LinkedList<>();
-      addFemNodes(comps, recordTongue,     root.tongue);
-      addFemNodes(comps, recordFace,       root.face);
-      addFemNodes(comps, recordSoftPalate, root.softPalate);
-      addFemNodes(comps, recordPharynx,    root.pharynx);
-      addFemNodes(comps, recordLarynx,     root.larynx);
-      EquilibriumChecker echk =
-         new EquilibriumChecker(EquilibriumCondition.STATIC, 1, comps);
+      /* 20260831Cyd 
       TimeChecker tchk = new TimeChecker(
-         TimeCondition.IN_RANGE_INCLUSIVE, echk,
+         TimeCondition.IN_RANGE_INCLUSIVE,
          myMaxTime - mySettleTime + myRootModel.getMaxStepSize(), myMaxTime);
+      ------20260831Cyd */
+      //20260819Cyd----comment out equilibrium checker, only require sim to survive to myMaxTime (like Badin Position worker)
+      //List<ModelComponent> comps = new LinkedList<>();
+      //addFemNodes(comps, recordTongue,     root.tongue);
+      //addFemNodes(comps, recordFace,       root.face);
+      //addFemNodes(comps, recordSoftPalate, root.softPalate);
+      //addFemNodes(comps, recordPharynx,    root.pharynx);
+      //addFemNodes(comps, recordLarynx,     root.larynx);
+      //EquilibriumChecker echk =
+      //   new EquilibriumChecker(EquilibriumCondition.STATIC, tchk, 1, comps);
+      //myStopConditionMonitor.addConditionChecker(echk);
+
+      /*20260831cyd
       myStopConditionMonitor.addConditionChecker(tchk);
+      ----20260831Cyd*/
+      //-----20260819Cyd
+      
    }
 
    private void addFemNodes(
@@ -243,5 +514,8 @@ public class FrankModel3BatchWorker extends SimpleTimedBatchWorker {
       myWriter.close();
       myPositionFileWriter.close();
       myFailedExcitationFileWriter.close();
+      
+      myMarkerFileWriter.close(); //20260913Cyd
+      myVppContactFileWriter.close(); //20260913Cyd
    }
 }
