@@ -43,7 +43,7 @@ import artisynth.models.frank2.FrankModel2;
 import artisynth.models.frank2.GenericModel;
 //20260831Cyd
 //0912 Shitong
-//import artisynth.models.frank2.FrankAttachments;
+import artisynth.models.frank2.FrankAttachments;
 //-----20260831Cyd
 import artisynth.models.jawTongue.AirwaySkin;
 import artisynth.models.jawTongue.StaticJawHyoidTongue;
@@ -118,7 +118,7 @@ public class FrankModel3 extends FrankModel2 {
    RigidBody cranium;
    //20260831Cyd
    //0912 Shitong
-   //RigidBody hyoid;
+   RigidBody hyoid;
    //---20260831Cyd
    RenderableComponentList<FemMuscleModel> fems;
    AirwaySkin airwaySkin;
@@ -152,7 +152,7 @@ public class FrankModel3 extends FrankModel2 {
       cranium = rbs.get ("cranium");
       //20260831Cyd
       //0912 Shitong
-      //hyoid = rbs.get ("hyoid"); 
+      hyoid = rbs.get ("hyoid"); 
       //---20260831Cyd
       fems = (RenderableComponentList<FemMuscleModel>)mechModel.get("DeformableBodies");
 
@@ -164,7 +164,7 @@ public class FrankModel3 extends FrankModel2 {
 
       //20260831Cyd - hyoid 
       //0912 Shitong
-      //FrankAttachments.defineHyoidConstraints(hyoid, maxilla, mechModel);
+      FrankAttachments.defineHyoidConstraints(hyoid, maxilla, mechModel);
 
       
       //mechModel.getCollisionManager().setCompliance(1e-5);
